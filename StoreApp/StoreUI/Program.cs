@@ -1,4 +1,5 @@
 ﻿using System;
+//using StoreModels;
 
 namespace StoreUI
 {
@@ -10,7 +11,9 @@ namespace StoreUI
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            //call method that starts main user interface
+            //call method that starts main user interface 
+             IMenu menu = new StoreMenu();
+            menu.Start();
         }
     }
 }

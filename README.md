@@ -1,5 +1,7 @@
 # StoreAppTemplate
 Template for the .NET P0 Store App
+
+Borrowed some boiler plate code from TourofHeroes
 Store App
 Overview:
     The store app is a software that helps customers purchase products from your business. Designed with functionality that would make virtual shopping much simpler!
