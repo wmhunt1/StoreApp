@@ -13,11 +13,15 @@ namespace StoreUI
             Boolean stay = true;
             do
             {
-                 //menu options part
+                //menu options part
                 Console.WriteLine("Welcome to the store! What would you like to do?");
-                Console.WriteLine("[0] Place an Order");
-                Console.WriteLine("[1] View All Orders");
-                Console.WriteLine("[2] Exit.");
+                Console.WriteLine("[0] Add a Customer");
+                Console.WriteLine("[1] View Customers");
+                Console.WriteLine("[2] Place Order");
+                Console.WriteLine("[3] View Orders");
+                Console.WriteLine("[4] View Inventory");
+                Console.WriteLine("[5] Replenish Inventory");
+                Console.WriteLine("[6] Exit Store.");
 
                 //get user input
                 Console.WriteLine("Enter a number: ");
@@ -26,20 +30,34 @@ namespace StoreUI
                 switch (userInput)
                 {
                     case "0":
-                        try
-                        {
-                            PlaceOrder();
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("invalid input." + e.Message);
-                            continue;
-                        }
+                        AddCustomer();
+                        break;
+                        // try
+                        // {
+                        //     PlaceOrder();
+                        // }
+                        // catch (Exception e)
+                        // {
+                        //     Console.WriteLine("invalid input." + e.Message);
+                        //     continue;
+                        // }
                         break;
                     case "1":
-                        ViewOrders();
+                        ViewCustomers();
                         break;
                     case "2":
+                        PlaceOrder();
+                        break;
+                    case "3":
+                        ViewOrders();
+                        break;
+                    case "4":
+                        ViewInventory();
+                        break;
+                    case "5":
+                        ReplenishInventory();
+                        break;
+                    case "6":
                         stay = false;
                         LeaveStore();
                         break;
@@ -48,24 +66,61 @@ namespace StoreUI
                         break;
                 }
 
-            } while(stay);
+            } while (stay);
+        }
+        public void AddCustomer()
+        {
+            Customer newCustomer = new Customer();
+            Console.WriteLine("Enter Customer Name: ");
+            newCustomer.Name = Console.ReadLine();
+        }
+        public void ViewCustomers()
+        {
+            Console.WriteLine("Customer List");
+        }
+        public void SearchCustomers()
+        {
+            Console.WriteLine("Searching Customers");
         }
         public void PlaceOrder()
         {
-            Console.WriteLine("Placing Order");
-            //Console.WriteLine("Order placed at: " + logger.Error());
-            //Customer and Location
-            //Items and Products
-            //would you like to add a new item?
-            
+            Console.WriteLine("Placing Orders");
         }
         public void ViewOrders()
         {
             Console.WriteLine("Viewing Orders");
         }
+        public void DisplayOrderDetails()
+        {
+            Console.WriteLine("Displaying Order Details");
+        }
+        public void CustomerHistory()
+        {
+            Console.WriteLine("Customer Order History");
+        }
+        public void LocationHistory()
+        {
+            Console.WriteLine("Location history");
+        }
+        public void ViewInventory()
+        {
+            Console.WriteLine("Viewing Inventory");
+        }
+        public void SortOrderByDate()
+        {
+            Console.WriteLine("Sorting by Order Date");
+        }
+        public void SortOrderByPrice()
+        {
+            Console.WriteLine("Sorting by Order Price");
+        }
+        public void ReplenishInventory()
+        {
+            Console.WriteLine("Replenishing Inventory");
+        }
         public void LeaveStore()
         {
-            Console.WriteLine("Leaving Store");   
+            Console.WriteLine("Leaving Store");
         }
     }
 }
