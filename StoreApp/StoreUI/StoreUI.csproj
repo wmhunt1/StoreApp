@@ -5,4 +5,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Nlog.config" Version="4.7.7" />
+     <ProjectReference Include="..\StoreModels\StoreModels.csproj" />
+  </ItemGroup>
+
 </Project>

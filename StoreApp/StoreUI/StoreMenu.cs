@@ -1,10 +1,12 @@
 using System;
-//using StoreModels;
+using NLog;
+using StoreModels;
 
 namespace StoreUI
 {
     public class StoreMenu : IMenu
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         public void Start()
         {
             Console.WriteLine("Menu Start");
@@ -51,6 +53,11 @@ namespace StoreUI
         public void PlaceOrder()
         {
             Console.WriteLine("Placing Order");
+            //Console.WriteLine("Order placed at: " + logger.Error());
+            //Customer and Location
+            //Items and Products
+            //would you like to add a new item?
+            
         }
         public void ViewOrders()
         {
