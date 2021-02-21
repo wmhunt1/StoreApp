@@ -14,14 +14,15 @@ namespace StoreUI
             do
             {
                 //menu options part
+                Console.WriteLine("=================================================");
                 Console.WriteLine("Welcome to the store! What would you like to do?");
-                Console.WriteLine("[0] Add a Customer");
-                Console.WriteLine("[1] View Customers");
-                Console.WriteLine("[2] Place Order");
-                Console.WriteLine("[3] View Orders");
-                Console.WriteLine("[4] View Inventory");
-                Console.WriteLine("[5] Replenish Inventory");
-                Console.WriteLine("[6] Exit Store.");
+                Console.WriteLine("[1] Add a Customer");
+                Console.WriteLine("[2] View Customers");
+                Console.WriteLine("[3] Place Order");
+                Console.WriteLine("[4] View Orders");
+                Console.WriteLine("[5] View Inventory");
+                Console.WriteLine("[6] Replenish Inventory");
+                Console.WriteLine("[0] Exit Store.");
 
                 //get user input
                 Console.WriteLine("Enter a number: ");
@@ -29,35 +30,25 @@ namespace StoreUI
 
                 switch (userInput)
                 {
-                    case "0":
+                    case "1":
                         AddCustomer();
                         break;
-                        // try
-                        // {
-                        //     PlaceOrder();
-                        // }
-                        // catch (Exception e)
-                        // {
-                        //     Console.WriteLine("invalid input." + e.Message);
-                        //     continue;
-                        // }
-                        break;
-                    case "1":
+                    case "2":
                         ViewCustomers();
                         break;
-                    case "2":
+                    case "3":
                         PlaceOrder();
                         break;
-                    case "3":
+                    case "4":
                         ViewOrders();
                         break;
-                    case "4":
+                    case "5":
                         ViewInventory();
                         break;
-                    case "5":
+                    case "6":
                         ReplenishInventory();
                         break;
-                    case "6":
+                    case "0":
                         stay = false;
                         LeaveStore();
                         break;
@@ -84,7 +75,9 @@ namespace StoreUI
         }
         public void PlaceOrder()
         {
-            Console.WriteLine("Placing Orders");
+            Console.WriteLine("Placing Order");
+            Order newOrder = new Order();
+
         }
         public void ViewOrders()
         {
