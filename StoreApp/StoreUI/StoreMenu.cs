@@ -1,15 +1,15 @@
 using System;
 using StoreModels;
 using StoreBL;
-namespace ToHUI
+namespace StoreUI
 {
-    public class HeroMenu : IMenu
+    public class StoreMenu : IMenu
     {
-        // private IHeroBL _heroBL;
-        // public HeroMenu(IHeroBL heroBL)
-        // {
-        //     _heroBL = heroBL;
-        // }
+        private IStoreBL _storeBL;
+        public StoreMenu(IStoreBL heroBL)
+        {
+            _storeBL = heroBL;
+        }
         public void Start()
         {
             Boolean stay = true;

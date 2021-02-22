@@ -11,7 +11,7 @@ namespace StoreDL
         private string filePath = "./StoreDL/CustomerFiles.json";
         public Customer AddCustomer(Customer newCustomer)
         {
-            List<> cutomersFromFile = GetCustomers();
+            List<Customer> customersFromFile = GetCustomers();
             customersFromFile.Add(newCustomer);
             jsonString = JsonSerializer.Serialize(customersFromFile);
             File.WriteAllText(filePath, jsonString);

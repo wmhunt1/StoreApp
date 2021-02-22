@@ -15,7 +15,7 @@ namespace StoreBL
         public void AddCustomer(Customer newCustomer)
         {
             //Todo: Add BL
-            _repo.AddHero(newCustomer);
+            _repo.AddCustomer(newCustomer);
         }
 
         public List<Customer> GetCustomers()

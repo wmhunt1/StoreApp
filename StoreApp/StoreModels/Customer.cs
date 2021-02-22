@@ -16,7 +16,7 @@ in c#:
 POCO - plain c# object 
     - class that holds data 
  */
-namespace CustomerModels
+namespace StoreModels
 {
     /// <summary>
     /// Data structure used for modeling a hero.
