@@ -42,9 +42,23 @@ namespace StoreUI
                             Console.WriteLine("invalid input." + e.Message);
                             continue;
                         }
-                        break;
+                    break;
                     case "2":
                         GetCustomers();
+                        break;
+                    case "3":
+                        try
+                        {
+                            CreateOrder();
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine("invalid input." + e.Message);
+                            continue;
+                        }
+                    break;
+                          case "4":
+                        GetOrders();
                         break;
                     case "0":
                         stay = false;
@@ -77,7 +91,22 @@ namespace StoreUI
             Console.ReadLine();
 
         }
-
+        public void CreateOrder()
+        {
+            Console.WriteLine("Placing Order");
+        }
+        public void GetOrders()
+        {
+            Console.WriteLine("Viewing Orders");
+        }
+        public void ViewInventory()
+        {
+            Console.WriteLine("Viewing Inventory");
+        }
+        public void ReplenishInventory()
+        {
+            Console.WriteLine("Replenishing Inventory");
+        }
         public void ExitRemarks()
         {
             Console.WriteLine("Goodbye friend! See you next time!");
