@@ -20,7 +20,7 @@ namespace StoreTests
         {
             string testName = "Customer";
             //Act
-            testHero.CustomerName = testName;
+            testCustomer.CustomerName = testName;
             //Assert
             Assert.Equal(testName, testCustomer.CustomerName);
         }
