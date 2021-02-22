@@ -6,9 +6,11 @@ namespace StoreUI
     public class StoreMenu : IMenu
     {
         private ICustomerBL _customerBL;
-        public StoreMenu(ICustomerBL customerBL)
+        private IOrderBL _orderBL;
+        public StoreMenu(ICustomerBL customerBL, IOrderBL orderBL)
         {
             _customerBL = customerBL;
+            _orderBL = orderBL;
         }
         public void Start()
         {
@@ -79,6 +81,8 @@ namespace StoreUI
 
             _customerBL.AddCustomer(newCustomer);
             Console.WriteLine("Customer Succesfully created!");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
 
         }
         public void GetCustomers()
@@ -93,7 +97,14 @@ namespace StoreUI
         }
         public void CreateOrder()
         {
-            Console.WriteLine("Placing Order");
+             Console.WriteLine("Placing Order");
+            Order newOrder = new Order();
+            Console.WriteLine("Enter Order Name: ");
+            newOrder.OrderName = Console.ReadLine();
+            _orderBL.AddOrder(newOrder);
+            Console.WriteLine("Order Succesfully placed!");
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
         }
         public void GetOrders()
         {

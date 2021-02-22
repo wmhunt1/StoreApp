@@ -8,7 +8,7 @@ namespace StoreDL
     public class CustomerRepoFile : ICustomerRepository
     {
         private string jsonString;
-        private string filePath = "./StoreDL/CustomerFiles.json";
+        private string filePath = "../StoreDL/CustomerFiles.json";
         public Customer AddCustomer(Customer newCustomer)
         {
             List<Customer> customersFromFile = GetCustomers();

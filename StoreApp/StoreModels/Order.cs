@@ -10,5 +10,25 @@ namespace StoreModels
         //public double Total { get; set; }
 
         //TODO: add a property for the order items
+        private string orderName;
+
+        public string OrderName
+        {
+            get { return orderName; }
+            set
+            {
+                if (value == null || value.Equals(""))
+                {
+                    // throw new ArgumentNullException("Order name can't be empty or null");
+                }
+                orderName = value;
+
+            }
+        }
+        // public int HP { get; set; }
+        // public Element ElementType { get; set; }
+        // public SuperPower SuperPower { get; set; }
+
+        public override string ToString() => $"Order Details: \n\t name: {this.OrderName}";
     }
 }

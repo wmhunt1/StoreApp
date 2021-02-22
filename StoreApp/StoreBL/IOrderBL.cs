@@ -1,10 +1,10 @@
 using StoreModels;
 using System.Collections.Generic;
-namespace StoreDL
+namespace StoreBL
 {
-    public interface IOrderRepository
+    public interface IOrderBL
     {
         List<Order> GetOrders();
-        Order AddOrder(Order newOrder);
+        void AddOrder(Order newOrder);
     }
 }
