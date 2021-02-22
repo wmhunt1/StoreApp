@@ -5,10 +5,10 @@ namespace StoreUI
 {
     public class StoreMenu : IMenu
     {
-        private IStoreBL _storeBL;
-        public StoreMenu(IStoreBL heroBL)
+        private ICustomerBL _customerBL;
+        public StoreMenu(ICustomerBL customerBL)
         {
-            _storeBL = heroBL;
+            _customerBL = customerBL;
         }
         public void Start()
         {
@@ -63,13 +63,13 @@ namespace StoreUI
             Console.WriteLine("Enter Customer Name: ");
             newCustomer.CustomerName = Console.ReadLine();
 
-            _storeBL.AddCustomer(newCustomer);
+            _customerBL.AddCustomer(newCustomer);
             Console.WriteLine("Customer Succesfully created!");
 
         }
         public void GetCustomers()
         {
-            foreach (var item in _storeBL.GetCustomers())
+            foreach (var item in _customerBL.GetCustomers())
             {
                 Console.WriteLine(item.ToString());
             }
