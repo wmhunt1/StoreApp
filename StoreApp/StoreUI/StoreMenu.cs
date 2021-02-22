@@ -18,8 +18,8 @@ namespace StoreUI
             do
             {
               //menu options part
-                Console.WriteLine("=================================================");
-                Console.WriteLine("Welcome to the store! What would you like to do?");
+                Console.WriteLine("=====================[Just Soup]=====================");
+                Console.WriteLine("Welcome to Just Soup! Can we get you any soup today?");
                 Console.WriteLine("[1] Add a Customer");
                 Console.WriteLine("[2] View Customers");
                 Console.WriteLine("[3] Place Order");
@@ -108,7 +108,12 @@ namespace StoreUI
         }
         public void GetOrders()
         {
-            Console.WriteLine("Viewing Orders");
+            foreach (var item in _orderBL.GetOrders())
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
         }
         public void ViewInventory()
         {
@@ -120,7 +125,7 @@ namespace StoreUI
         }
         public void ExitRemarks()
         {
-            Console.WriteLine("Goodbye friend! See you next time!");
+            Console.WriteLine("No Soup for You!");
         }
     }
 }
