@@ -25,9 +25,6 @@ namespace StoreModels
 
             }
         }
-        // public int HP { get; set; }
-        // public Element ElementType { get; set; }
-        // public SuperPower SuperPower { get; set; }
 
         public override string ToString() => $"Order Details: \n\t name: {this.OrderName}";
     }
