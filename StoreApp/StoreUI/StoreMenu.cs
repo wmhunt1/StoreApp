@@ -103,6 +103,7 @@ namespace StoreUI
                 Console.WriteLine(item.ToString());
             }
             Console.WriteLine("Press any key to continue");
+            //and function to get order history
             Console.ReadLine();
 
         }
@@ -138,6 +139,7 @@ namespace StoreUI
                 Console.WriteLine(item.ToString());
             }
             Console.WriteLine("Press any key to continue");
+            //then two functions to sort by Location or Customer
             Console.ReadLine();
         }
         public void ViewInventory()
