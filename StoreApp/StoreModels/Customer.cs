@@ -25,7 +25,7 @@ namespace StoreModels
         }
          public string CustomerAddress
         {
-            get { return customerName; }
+            get { return customerAddress; }
             set
             {
                 if (value == null || value.Equals(""))
