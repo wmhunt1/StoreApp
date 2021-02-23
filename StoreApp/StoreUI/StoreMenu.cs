@@ -74,13 +74,14 @@ namespace StoreUI
         }
         public void CreateCustomer()
         {
-            Console.WriteLine("Creating Customer");
+            Console.WriteLine("Adding Customer");
             Customer newCustomer = new Customer();
             Console.WriteLine("Enter Customer Name: ");
             newCustomer.CustomerName = Console.ReadLine();
-
+             Console.WriteLine("Enter Customer Address: ");
+            newCustomer.CustomerAddress = Console.ReadLine();
             _customerBL.AddCustomer(newCustomer);
-            Console.WriteLine("Customer Succesfully created!");
+            Console.WriteLine("Customer Succesfully Added!");
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
 
@@ -97,10 +98,20 @@ namespace StoreUI
         }
         public void CreateOrder()
         {
-             Console.WriteLine("Placing Order");
+            Console.WriteLine("Placing Order");
             Order newOrder = new Order();
-            Console.WriteLine("Enter Order Name: ");
-            newOrder.OrderName = Console.ReadLine();
+            //Console.WriteLine("Enter Order Name: ");
+            //newOrder.OrderName = Console.ReadLine();
+            //newOrder.OrderName = "Test";
+            Console.WriteLine("Select Customer from List");
+            var i = 0;
+            foreach (var item in _customerBL.GetCustomers())
+            {
+                Console.WriteLine(i + ": " + item.CustomerName);
+                i++;
+            }
+            //Get selection latter
+            newOrder.OrderCustomerName = Console.ReadLine();
             _orderBL.AddOrder(newOrder);
             Console.WriteLine("Order Succesfully placed!");
             Console.WriteLine("Press any key to continue");
