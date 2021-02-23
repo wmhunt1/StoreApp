@@ -1,16 +1,21 @@
 using System;
 using StoreModels;
 using StoreBL;
+using System.Collections;
+using System.Collections.Generic;
 namespace StoreUI
 {
     public class StoreMenu : IMenu
     {
         private ICustomerBL _customerBL;
         private IOrderBL _orderBL;
-        public StoreMenu(ICustomerBL customerBL, IOrderBL orderBL)
+
+        private IProductBL _productBL;
+        public StoreMenu(ICustomerBL customerBL, IOrderBL orderBL, IProductBL productBL)
         {
             _customerBL = customerBL;
             _orderBL = orderBL;
+            _productBL = productBL;
         }
         public void Start()
         {
@@ -105,13 +110,17 @@ namespace StoreUI
             //newOrder.OrderName = "Test";
             Console.WriteLine("Select Customer from List");
             var i = 0;
-            foreach (var item in _customerBL.GetCustomers())
+            List<Customer> customerList = _customerBL.GetCustomers();
+            foreach (var item in customerList)
             {
                 Console.WriteLine(i + ": " + item.CustomerName);
                 i++;
             }
-            //Get selection latter
-            newOrder.OrderCustomerName = Console.ReadLine();
+            var choice = Convert.ToInt32(Console.ReadLine());
+            newOrder.OrderCustomerName = customerList[choice].CustomerName;
+            //Need to be able to select customer from list
+            //next need products and quantity along with total
+            //a loop to add items and quantity until done
             _orderBL.AddOrder(newOrder);
             Console.WriteLine("Order Succesfully placed!");
             Console.WriteLine("Press any key to continue");

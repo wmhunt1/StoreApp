@@ -9,22 +9,6 @@ namespace StoreModels
         //public Location Location { get; set; }
         //public double Total { get; set; }
 
-        //TODO: add a property for the order items
-        // private string orderName;
-
-        // public string OrderName
-        // {
-        //     get { return orderName; }
-        //     set
-        //     {
-        //         if (value == null || value.Equals(""))
-        //         {
-        //             // throw new ArgumentNullException("Order name can't be empty or null");
-        //         }
-        //         orderName = value;
-
-        //     }
-        // }
         private string orderCustomerName;
 
         public string OrderCustomerName
