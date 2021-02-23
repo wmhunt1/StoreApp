@@ -10,12 +10,14 @@ namespace StoreUI
         private ICustomerBL _customerBL;
 
         private IItemBL _itemBL;
+        private ILocationBL _locationBL;
         private IOrderBL _orderBL;
         private IProductBL _productBL;
-        public StoreMenu(ICustomerBL customerBL,IItemBL itemBL, IOrderBL orderBL, IProductBL productBL)
+        public StoreMenu(ICustomerBL customerBL,IItemBL itemBL, ILocationBL locationBL, IOrderBL orderBL, IProductBL productBL)
         {
             _customerBL = customerBL;
             _itemBL = itemBL;
+            _locationBL = locationBL;
             _orderBL = orderBL;
             _productBL = productBL;
             
