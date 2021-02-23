@@ -8,14 +8,17 @@ namespace StoreUI
     public class StoreMenu : IMenu
     {
         private ICustomerBL _customerBL;
-        private IOrderBL _orderBL;
 
+        private IItemBL _itemBL;
+        private IOrderBL _orderBL;
         private IProductBL _productBL;
-        public StoreMenu(ICustomerBL customerBL, IOrderBL orderBL, IProductBL productBL)
+        public StoreMenu(ICustomerBL customerBL,IItemBL itemBL, IOrderBL orderBL, IProductBL productBL)
         {
             _customerBL = customerBL;
+            _itemBL = itemBL;
             _orderBL = orderBL;
             _productBL = productBL;
+            
         }
         public void Start()
         {
