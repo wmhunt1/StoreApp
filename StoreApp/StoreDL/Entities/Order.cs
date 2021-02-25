@@ -9,6 +9,6 @@ namespace StoreDL.Entities
     {
         //public string OrderCustomerName { get; set; }
         public int OrderId { get; set; }
-        public virtual Customer Customer { get; set; }
+        public virtual Customer OrderCustomer { get; set; }
     }
 }

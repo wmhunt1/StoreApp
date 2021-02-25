@@ -15,5 +15,5 @@ create table customers
 create table orders
 (
     orderid int identity primary key,
-    customer int unique not null references customers(cid) on delete cascade
+    orderCustomer int unique not null references customers(cid) on delete cascade
 );
