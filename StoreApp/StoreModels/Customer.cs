@@ -38,6 +38,6 @@ namespace StoreModels
         }
         //someone for order history
 
-        public override string ToString() => $"Customer Details: \n\t name: {this.CustomerName} \n address: {this.CustomerAddress}";
+        public override string ToString() => $"Customer Details: \n name: {this.CustomerName} \n address: {this.CustomerAddress}";
     }
 }

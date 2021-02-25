@@ -9,21 +9,23 @@ namespace StoreModels
         //public Location Location { get; set; }
         //public double Total { get; set; }
 
-        private string orderCustomerName;
+        // private string orderCustomerName;
 
-        public string OrderCustomerName
-        {
-            get { return orderCustomerName; }
-            set
-            {
-                if (value == null || value.Equals(""))
-                {
-                    // throw new ArgumentNullException("Order name can't be empty or null");
-                }
-                orderCustomerName = value;
+        // public string OrderCustomerName
+        // {
+        //     get { return orderCustomerName; }
+        //     set
+        //     {
+        //         if (value == null || value.Equals(""))
+        //         {
+        //             // throw new ArgumentNullException("Order name can't be empty or null");
+        //         }
+        //         orderCustomerName = value;
 
-            }
-        }
-        public override string ToString() => $"Order Details: \n\t Customer: {this.OrderCustomerName}";
+        //     }
+        // }
+        public Customer Customer { get; set; }
+
+        public override string ToString() => $"Order Details: \n\t Customer: {this.Customer.CustomerName}";
     }
 }

@@ -123,7 +123,7 @@ namespace StoreUI
                 i++;
             }
             var choice = Convert.ToInt32(Console.ReadLine());
-            newOrder.OrderCustomerName = customerList[choice].CustomerName;
+            newOrder.Customer = customerList[choice];
             //Need to be able to select customer from list
             //next need products and quantity along with total
             //a loop to add items and quantity until done
