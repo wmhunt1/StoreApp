@@ -5,7 +5,8 @@ namespace StoreModels
     /// </summary>
     public class Order
     {
-        //public Customer Customer { get; set; }
+        public Customer customer { get; set; }
+        public int orderId { get; set; }
         //public Location Location { get; set; }
         //public double Total { get; set; }
 
@@ -24,7 +25,12 @@ namespace StoreModels
 
         //     }
         // }
-        public Customer Customer { get; set; }
+        public int? OrderId { get; set; }
+        public Customer Customer
+        {
+            get { return customer; }
+            set { customer = value; }
+        }
 
         public override string ToString() => $"Order Details: \n\t Customer: {this.Customer.CustomerName}";
     }

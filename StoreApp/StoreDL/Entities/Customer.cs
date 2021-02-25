@@ -11,6 +11,8 @@ namespace StoreDL.Entities
         public string CustomerName { get; set; }
 
         public string CustomerAddress { get; set; }
+
+        public int CId { get; set; }
     
     }
 }
