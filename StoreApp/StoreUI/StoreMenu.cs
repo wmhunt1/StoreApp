@@ -69,9 +69,15 @@ namespace StoreUI
                             continue;
                         }
                     break;
-                          case "4":
+                    case "4":
                         GetOrders();
-                        break;
+                    break;
+                    case "5":
+                       Console.WriteLine("Function not yet implemented");
+                    break;
+                    case "6":
+                       Console.WriteLine("Function not yet implemented");
+                    break;
                     case "0":
                         stay = false;
                         ExitRemarks();
@@ -147,9 +153,6 @@ namespace StoreUI
         private Order GetOrderDetails()
         {
             Order newOrder = new Order();
-            //Console.WriteLine("Enter Order Name: ");
-            //newOrder.OrderName = Console.ReadLine();
-            //newOrder.OrderName = "Test";
             Console.WriteLine("Select Customer from List");
             var i = 0;
             List<Customer> customerList = _customerBL.GetCustomers();
@@ -160,6 +163,7 @@ namespace StoreUI
             }
             var choice = Convert.ToInt32(Console.ReadLine());
             newOrder.OrderCustomer = customerList[choice];
+            Console.WriteLine(newOrder.OrderCustomer);
             //Need to be able to select customer from list
             //next need products and quantity along with total
             //a loop to add items and quantity until done

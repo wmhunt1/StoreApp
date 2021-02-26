@@ -25,15 +25,18 @@ namespace StoreDL
 
         public Order AddOrder(Order newOrder)
         {
-            throw new System.NotImplementedException();
+             _context.Orders.Add(_mapper.ParseOrder(newOrder));
+            _context.SaveChanges();
+            return newOrder;
+            //throw new System.NotImplementedException();
         }
 
-        public Customer DeleteCustomer(Customer customer2BDeleted)
-        {
-            _context.Customers.Remove(_mapper.ParseCustomer(customer2BDeleted));
-            _context.SaveChanges();
-            return customer2BDeleted;
-        }
+        // public Customer DeleteCustomer(Customer customer2BDeleted)
+        // {
+        //     _context.Customers.Remove(_mapper.ParseCustomer(customer2BDeleted));
+        //     _context.SaveChanges();
+        //     return customer2BDeleted;
+        // }
 
         // public Customer GetCustomerByName(string name)
         // {
@@ -47,7 +50,8 @@ namespace StoreDL
 
         public List<Order> GetOrders()
         {
-            throw new System.NotImplementedException();
+             return _context.Orders.AsNoTracking().Select(x => _mapper.ParseOrder(x)).ToList();
+            //throw new System.NotImplementedException();
         }
 
         // public void UpdateCustomer(Customer customer2BUpdated)

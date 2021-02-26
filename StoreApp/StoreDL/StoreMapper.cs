@@ -18,7 +18,6 @@ namespace StoreDL
 
         public Entity.Customer ParseCustomer(Model.Customer customer)
         {
-            // For when you add a new hero, Id isn't set yet
             if (customer.CustomerId == null)
             {
                 return new Entity.Customer
@@ -47,7 +46,6 @@ namespace StoreDL
 
         public Entity.Order ParseOrder(Model.Order order)
         {
-            // For when you add a new hero, Id isn't set yet
             if (order.OrderId == null)
             {
                 return new Entity.Order
