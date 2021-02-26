@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -16,6 +16,7 @@ namespace StoreDL.Entities
             : base(options)
         {
         }
+
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
@@ -29,18 +30,17 @@ namespace StoreDL.Entities
 
                 entity.Property(e => e.CustomerId).HasColumnName("customerId");
 
-                entity.Property(e => e.CustomerName)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("customerName");
-
-                  entity.Property(e => e.CustomerAddress)
+                entity.Property(e => e.CustomerAddress)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("customerAddress");
 
+                entity.Property(e => e.CustomerName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("customerName");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -49,8 +49,12 @@ namespace StoreDL.Entities
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
-                entity.Property(e => e.OrderCustomer).HasColumnName("customerId");
+                entity.Property(e => e.OrderCustomer).HasColumnName("orderCustomer");
 
+                entity.HasOne(d => d.OrderCustomerNavigation)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.OrderCustomer)
+                    .HasConstraintName("FK__orders__orderCus__0A9D95DB");
             });
 
             OnModelCreatingPartial(modelBuilder);
