@@ -49,12 +49,13 @@ namespace StoreDL.Entities
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
-                entity.Property(e => e.OrderCustomer).HasColumnName("orderCustomer");
+                entity.Property(e => e.OrderCustomerId).HasColumnName("orderCustomerId");
 
-                entity.HasOne(d => d.OrderCustomerNavigation)
+                entity.HasOne(d => d.OrderCustomer)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.OrderCustomer)
-                    .HasConstraintName("FK__orders__orderCus__0A9D95DB");
+                    .HasForeignKey(d => d.OrderCustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__orders__orderCus__17F790F9");
             });
 
             OnModelCreatingPartial(modelBuilder);

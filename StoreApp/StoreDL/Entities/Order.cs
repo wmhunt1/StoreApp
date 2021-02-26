@@ -8,8 +8,8 @@ namespace StoreDL.Entities
     public partial class Order
     {
         public int OrderId { get; set; }
-        public Customer OrderCustomer { get; set; }
+        public int OrderCustomerId { get; set; }
 
-        public virtual Customer OrderCustomerNavigation { get; set; }
+        public virtual Customer OrderCustomer { get; set; }
     }
 }
