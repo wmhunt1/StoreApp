@@ -27,7 +27,7 @@ namespace StoreDL.Entities
             {
                 entity.ToTable("customers");
 
-                entity.Property(e => e.CId).HasColumnName("customer id");
+                entity.Property(e => e.CustomerId).HasColumnName("customerId");
 
                 entity.Property(e => e.CustomerName)
                     .IsRequired()
@@ -47,9 +47,9 @@ namespace StoreDL.Entities
             {
                 entity.ToTable("orders");
 
-                entity.Property(e => e.OrderId).HasColumnName("orderid");
+                entity.Property(e => e.OrderId).HasColumnName("orderId");
 
-                entity.Property(e => e.OrderCustomer).HasColumnName("customer");
+                entity.Property(e => e.OrderCustomer).HasColumnName("customerId");
 
             });
 

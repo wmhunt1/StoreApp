@@ -10,8 +10,8 @@ namespace StoreModels
         private string customerName;
         private string customerAddress;
         //something for order history
-        private int cid;
-        public int? CId { get; set; }
+        private int customerId;
+        public int? CustomerId { get; set; }
         public string CustomerName
         {
             get { return customerName; }
@@ -40,6 +40,6 @@ namespace StoreModels
         }
         //someone for order history
 
-        public override string ToString() => $"Customer Details: \n {this.CId}: name: {this.CustomerName} \n address: {this.CustomerAddress}";
+        public override string ToString() => $"Customer Details: \n name: {this.CustomerName} \n address: {this.CustomerAddress}";
     }
 }

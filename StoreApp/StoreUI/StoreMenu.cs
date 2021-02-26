@@ -84,16 +84,11 @@ namespace StoreUI
         }
         public void CreateCustomer()
         {
-            Console.WriteLine("Adding Customer");
-            Customer newCustomer = new Customer();
-            Console.WriteLine("Enter Customer Name: ");
-            newCustomer.CustomerName = Console.ReadLine();
-             Console.WriteLine("Enter Customer Address: ");
-            newCustomer.CustomerAddress = Console.ReadLine();
-            _customerBL.AddCustomer(newCustomer);
+            _customerBL.AddCustomer(GetCustomerDetails());
             Console.WriteLine("Customer Succesfully Added!");
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
+            //return newCustomer;
 
         }
         public void GetCustomers()
@@ -110,27 +105,11 @@ namespace StoreUI
         public void CreateOrder()
         {
             Console.WriteLine("Placing Order");
-            Order newOrder = new Order();
-            //Console.WriteLine("Enter Order Name: ");
-            //newOrder.OrderName = Console.ReadLine();
-            //newOrder.OrderName = "Test";
-            Console.WriteLine("Select Customer from List");
-            var i = 0;
-            List<Customer> customerList = _customerBL.GetCustomers();
-            foreach (var item in customerList)
-            {
-                Console.WriteLine(i + ": " + item.CustomerName);
-                i++;
-            }
-            var choice = Convert.ToInt32(Console.ReadLine());
-            newOrder.OrderCustomer = customerList[choice];
-            //Need to be able to select customer from list
-            //next need products and quantity along with total
-            //a loop to add items and quantity until done
-            _orderBL.AddOrder(newOrder);
+            _orderBL.AddOrder(GetOrderDetails());
             Console.WriteLine("Order Succesfully placed!");
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
+            //return newOrder;
         }
         public void GetOrders()
         {
@@ -153,6 +132,38 @@ namespace StoreUI
         public void ExitRemarks()
         {
             Console.WriteLine("No Soup for You!");
+        }
+            private Customer GetCustomerDetails()
+        {
+            Console.WriteLine("Adding Customer");
+            Customer newCustomer = new Customer();
+            Console.WriteLine("Enter Customer Name: ");
+            newCustomer.CustomerName = Console.ReadLine();
+             Console.WriteLine("Enter Customer Address: ");
+            newCustomer.CustomerAddress = Console.ReadLine();
+
+            return newCustomer;
+        }
+        private Order GetOrderDetails()
+        {
+            Order newOrder = new Order();
+            //Console.WriteLine("Enter Order Name: ");
+            //newOrder.OrderName = Console.ReadLine();
+            //newOrder.OrderName = "Test";
+            Console.WriteLine("Select Customer from List");
+            var i = 0;
+            List<Customer> customerList = _customerBL.GetCustomers();
+            foreach (var item in customerList)
+            {
+                Console.WriteLine(i + ": " + item.CustomerName);
+                i++;
+            }
+            var choice = Convert.ToInt32(Console.ReadLine());
+            newOrder.OrderCustomer = customerList[choice];
+            //Need to be able to select customer from list
+            //next need products and quantity along with total
+            //a loop to add items and quantity until done
+            return newOrder;
         }
     }
 }

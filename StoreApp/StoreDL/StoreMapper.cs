@@ -12,14 +12,14 @@ namespace StoreDL
             {
                 CustomerName = customer.CustomerName,
                 CustomerAddress = customer.CustomerAddress,
-                CId = customer.CId
+                CustomerId = customer.CustomerId
             };
         }
 
         public Entity.Customer ParseCustomer(Model.Customer customer)
         {
             // For when you add a new hero, Id isn't set yet
-            if (customer.CId == null)
+            if (customer.CustomerId == null)
             {
                 return new Entity.Customer
                 {
@@ -32,7 +32,7 @@ namespace StoreDL
             {
                 CustomerName = customer.CustomerName,
                 CustomerAddress = customer.CustomerAddress,
-                CId = (int)customer.CId
+                CustomerId = (int)customer.CustomerId
             };
 
         }

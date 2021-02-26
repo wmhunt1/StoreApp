@@ -12,7 +12,7 @@ namespace StoreDL.Entities
 
         public string CustomerAddress { get; set; }
 
-        public int CId { get; set; }
+        public int CustomerId { get; set; }
     
     }
 }

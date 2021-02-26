@@ -7,13 +7,13 @@ drop table orders;
 
 create table customers
 (
-    cid int identity primary key,
+    customerId int identity primary key,
     customerName varchar(100) not null,
     customerAddress varchar(100) not null
 );
 
 create table orders
 (
-    orderid int identity primary key,
-    orderCustomer int unique not null references customers(cid) on delete cascade
+    orderId int identity primary key,
+    orderCustomer int unique not null references customers(customerId) on delete cascade
 );
