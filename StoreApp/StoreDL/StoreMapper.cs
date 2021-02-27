@@ -90,5 +90,24 @@ namespace StoreDL
             };
 
         }
+         public Model.Product ParseProduct(Entity.Product product)
+        {
+            return new Model.Product
+            {
+                ProductName = product.ProductName,
+                Price = product.Price,
+            };
+        }
+
+        public Entity.Product ParseProduct(Model.Product product)
+        {
+            //for updating and deletion purposes
+            return new Entity.Product
+            {
+                ProductName = product.ProductName,
+                Price = product.Price,
+            };
+
+        }
     }
 }

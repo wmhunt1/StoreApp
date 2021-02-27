@@ -15,6 +15,8 @@ namespace StoreDL
 
         Model.Location ParseLocation(Entity.Location location);
         Entity.Location ParseLocation(Model.Location location);
+        Model.Product ParseProduct(Entity.Product product);
+        Entity.Product ParseProduct(Model.Product product);
 
     }
 }

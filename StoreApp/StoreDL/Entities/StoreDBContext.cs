@@ -20,7 +20,7 @@ namespace StoreDL.Entities
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-
+        public virtual DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -89,6 +89,23 @@ namespace StoreDL.Entities
                     .HasForeignKey(d => d.OrderCustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__orders__orderCus__1CBC4616");
+            });
+
+            modelBuilder.Entity<Product>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("products");
+
+                entity.Property(e => e.Price)
+                    .HasColumnType("money")
+                    .HasColumnName("price");
+
+                entity.Property(e => e.ProductName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("productName");
             });
 
             OnModelCreatingPartial(modelBuilder);

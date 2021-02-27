@@ -40,6 +40,7 @@ namespace StoreUI
                 Console.WriteLine("[6] View Inventory By Location");
                 Console.WriteLine("[7] Replenish Inventory");
                 Console.WriteLine("[8] Order History by Location");
+                Console.WriteLine("[9] Test");
                 Console.WriteLine("[0] Exit Store.");
 
                 //get user input
@@ -83,6 +84,9 @@ namespace StoreUI
                         order = true;
                      //location order history
                         SearchLocations();
+                    break;
+                    case "9":
+                        Test();
                     break;
                     case "0":
                         stay = false;
@@ -189,13 +193,22 @@ namespace StoreUI
             var choice = Convert.ToInt32(Console.ReadLine());
             int chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
             newOrder.OrderCustomerId  = chosenCustomer;
+            Console.WriteLine("Add Items to Cart");
+            AnyButton();
+            var j = 0;
+            List<Product> productList = _productBL.GetProducts();
+            foreach (var item in productList)
+            {
+                Console.WriteLine(j + ": " + item.ProductName + ", $" + item.Price);
+                j++;
+            }
             Console.WriteLine("Select Store from List");
-            var i2 = 0;
+            var k = 0;
             List<Location> locationList = _locationBL.GetLocations();
             foreach (var item in locationList)
             {
-                Console.WriteLine(i2 + ": " + item.LocationName);
-                i2++;
+                Console.WriteLine(k + ": " + item.LocationName);
+                k++;
             }
             var choice2 = Convert.ToInt32(Console.ReadLine());
             string chosenLocation = locationList[choice2].LocationName;
@@ -242,7 +255,6 @@ namespace StoreUI
                 }
                 else
                 {
-                    //Console.WriteLine("Customer has no order history");
                 }
             }
             order = false;
@@ -271,6 +283,9 @@ namespace StoreUI
           public void ExitRemarks()
         {
             Console.WriteLine("No Soup for You!");
+        }
+        public void Test(){
+         
         }
     }
 }

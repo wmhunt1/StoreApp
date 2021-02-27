@@ -28,7 +28,7 @@ namespace StoreUI
             , new ItemBL(new ItemRepoFile())
             , new LocationBL(new StoreRepoDB(context, new StoreMapper()))
             , new OrderBL(new StoreRepoDB(context, new StoreMapper()))
-            , new ProductBL(new ProductRepoFile()));
+            , new ProductBL(new StoreRepoDB(context, new StoreMapper())));
             menu.Start();
         }
     }

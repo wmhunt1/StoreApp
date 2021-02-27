@@ -7,7 +7,7 @@ using StoreModels;
 
 namespace StoreDL
 {
-    public class StoreRepoDB : ICustomerRepository, IOrderRepository, ILocationRepository
+    public class StoreRepoDB : ICustomerRepository, IOrderRepository, ILocationRepository, IProductRepository
     {
         private Entity.StoreDBContext _context;
         private IMapper _mapper;
@@ -36,6 +36,12 @@ namespace StoreDL
             _context.SaveChanges();
             return newLocation;
         }
+         public Product AddProduct(Product newProduct)
+        {
+             _context.Products.Add(_mapper.ParseProduct(newProduct));
+            _context.SaveChanges();
+            return newProduct;
+        }
 
         public List<Model.Customer> GetCustomers()
         {
@@ -56,6 +62,10 @@ namespace StoreDL
          public List<Location> GetLocations()
         {
              return _context.Locations.AsNoTracking().Select(x => _mapper.ParseLocation(x)).ToList();
+        }
+         public List<Product> GetProducts()
+        {
+             return _context.Products.AsNoTracking().Select(x => _mapper.ParseProduct(x)).ToList();
         }
         public Order FilterOrdersByCustomerID(int id)
         {
