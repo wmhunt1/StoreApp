@@ -66,6 +66,14 @@ namespace StoreDL
             .FirstOrDefault(x => x.OrderCustomerId == id);
         }
 
+         public Location GetLocationByName(string name)
+        {
+            return _context.Locations
+            .AsNoTracking()
+            .Select(x => _mapper.ParseLocation(x))
+            .ToList()
+            .FirstOrDefault(x => x.LocationName == name);
+        }
         // public void UpdateCustomer(Customer customer2BUpdated)
         // {
         //     Entity.Customer oldCustomer = _context.Customers.Find(customer2BUpdated.CId);

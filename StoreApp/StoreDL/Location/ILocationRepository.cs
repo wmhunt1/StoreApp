@@ -6,5 +6,6 @@ namespace StoreDL
     {
         List<Location> GetLocations();
         Location AddLocation(Location newLocation);
+        Location GetLocationByName(string name);
     }
 }

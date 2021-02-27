@@ -23,5 +23,9 @@ namespace StoreBL
             //TODO add BL
             return _repo.GetLocations();
         }
+        public Location GetLocationByName(string name)
+        {
+            return _repo.GetLocationByName(name);
+        }
     }
 }

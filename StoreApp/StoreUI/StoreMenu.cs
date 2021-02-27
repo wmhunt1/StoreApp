@@ -22,6 +22,8 @@ namespace StoreUI
             _productBL = productBL;
             
         }
+        Boolean inventory = false;
+        Boolean order = false;
         public void Start()
         {
             Boolean stay = true;
@@ -35,7 +37,7 @@ namespace StoreUI
                 Console.WriteLine("[3] Search Customers");
                 Console.WriteLine("[4] Place Order");
                 Console.WriteLine("[5] View Orders");
-                Console.WriteLine("[6] View Inventory");
+                Console.WriteLine("[6] View Inventory By Location");
                 Console.WriteLine("[7] Replenish Inventory");
                 Console.WriteLine("[8] Order History by Location");
                 Console.WriteLine("[0] Exit Store.");
@@ -70,12 +72,16 @@ namespace StoreUI
                         GetOrders();
                     break;
                     case "6":
-                       Console.WriteLine("Function not yet implemented");
+                    //inventory by location
+                        inventory = true; 
+                       SearchLocations();
                     break;
                     case "7":
                        Console.WriteLine("Function not yet implemented");
                     break;
                      case "8":
+                        order = true;
+                     //location order history
                         SearchLocations();
                     break;
                     case "0":
@@ -122,7 +128,6 @@ namespace StoreUI
                 int foundId = Convert.ToInt32(foundCustomer.CustomerId);
                 CustomerOrderHistory(foundId);
                 AnyButton();
-                //then order history
             }
         }
         public void CustomerOrderHistory(int x)
@@ -155,10 +160,6 @@ namespace StoreUI
                 Console.WriteLine(item.ToString());
             }
             AnyButton();
-        }
-        public void ViewInventory()
-        {
-            Console.WriteLine("Viewing Inventory");
         }
         public void ReplenishInventory()
         {
@@ -206,7 +207,61 @@ namespace StoreUI
         }
         public void SearchLocations()
         {
-
+            Console.WriteLine("Enter location full name: ");
+            Location foundLocation = _locationBL.GetLocationByName(Console.ReadLine());
+            if (foundLocation == null)
+            {
+                Console.WriteLine("No location found.");
+                AnyButton();
+            }
+            else
+            {
+                Console.WriteLine("location found.");
+                Console.WriteLine(foundLocation.ToString());
+                AnyButton();
+                Console.WriteLine("Location Order History");
+                string foundName = foundLocation.LocationName;
+                if (order == true)
+                {
+                    LocationOrderHistory(foundName);
+                }
+                else
+                {
+                    LocationInventory(foundName);
+                }
+                AnyButton();
+            }
+        }
+        public void LocationOrderHistory(string x)
+        {
+            foreach (var item in _orderBL.GetOrders())
+            {
+                if (item.OrderLocation == x)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                else
+                {
+                    //Console.WriteLine("Customer has no order history");
+                }
+            }
+            order = false;
+        }
+        public void LocationInventory(string x)
+        {
+            Console.WriteLine("Location Inventory");
+            inventory = false;
+            //  foreach (var item in _orderBL.GetOrders())
+            // {
+            //     if (item.OrderLocation == x)
+            //     {
+            //         Console.WriteLine(item.ToString());
+            //     }
+            //     else
+            //     {
+            //         //Console.WriteLine("Customer has no order history");
+            //     }
+            // }
         }
         public void AnyButton()
         {
