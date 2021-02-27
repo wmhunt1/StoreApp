@@ -37,6 +37,7 @@ namespace StoreUI
                 Console.WriteLine("[5] View Orders");
                 Console.WriteLine("[6] View Inventory");
                 Console.WriteLine("[7] Replenish Inventory");
+                Console.WriteLine("[8] Order History by Location");
                 Console.WriteLine("[0] Exit Store.");
 
                 //get user input
@@ -73,6 +74,9 @@ namespace StoreUI
                     break;
                     case "7":
                        Console.WriteLine("Function not yet implemented");
+                    break;
+                     case "8":
+                        SearchLocations();
                     break;
                     case "0":
                         stay = false;
@@ -115,8 +119,24 @@ namespace StoreUI
                 Console.WriteLine(foundCustomer.ToString());
                 AnyButton();
                 Console.WriteLine("Customer Order History");
+                int foundId = Convert.ToInt32(foundCustomer.CustomerId);
+                CustomerOrderHistory(foundId);
                 AnyButton();
                 //then order history
+            }
+        }
+        public void CustomerOrderHistory(int x)
+        {
+            foreach (var item in _orderBL.GetOrders())
+            {
+                if (item.OrderCustomerId == x)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                else
+                {
+                    //Console.WriteLine("Customer has no order history");
+                }
             }
         }
         public void CreateOrder()
@@ -143,10 +163,6 @@ namespace StoreUI
         public void ReplenishInventory()
         {
             Console.WriteLine("Replenishing Inventory");
-        }
-        public void ExitRemarks()
-        {
-            Console.WriteLine("No Soup for You!");
         }
             private Customer GetCustomerDetails()
         {
@@ -188,10 +204,18 @@ namespace StoreUI
             return newOrder;
         
         }
+        public void SearchLocations()
+        {
+
+        }
         public void AnyButton()
         {
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
+        }
+          public void ExitRemarks()
+        {
+            Console.WriteLine("No Soup for You!");
         }
     }
 }

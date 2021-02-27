@@ -52,12 +52,18 @@ namespace StoreDL
         public List<Order> GetOrders()
         {
              return _context.Orders.AsNoTracking().Select(x => _mapper.ParseOrder(x)).ToList();
-            //throw new System.NotImplementedException();
         }
          public List<Location> GetLocations()
         {
              return _context.Locations.AsNoTracking().Select(x => _mapper.ParseLocation(x)).ToList();
-            //throw new System.NotImplementedException();
+        }
+        public Order FilterOrdersByCustomerID(int id)
+        {
+            return _context.Orders
+             .AsNoTracking()
+            .Select(x => _mapper.ParseOrder(x))
+            .ToList()
+            .FirstOrDefault(x => x.OrderCustomerId == id);
         }
 
         // public void UpdateCustomer(Customer customer2BUpdated)

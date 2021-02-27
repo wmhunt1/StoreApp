@@ -23,5 +23,9 @@ namespace StoreBL
             //TODO add BL
             return _repo.GetOrders();
         }
+        public Order FilterOrdersByCustomerID(int id)
+        {
+            return _repo.FilterOrdersByCustomerID(id);
+        }
     }
 }

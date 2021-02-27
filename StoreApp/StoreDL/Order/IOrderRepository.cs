@@ -6,5 +6,7 @@ namespace StoreDL
     {
         List<Order> GetOrders();
         Order AddOrder(Order newOrder);
+
+        Order FilterOrdersByCustomerID(int id);
     }
 }
