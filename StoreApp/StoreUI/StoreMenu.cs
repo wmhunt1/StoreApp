@@ -63,15 +63,7 @@ namespace StoreUI
                         SearchCustomers();
                         break;
                     case "4":
-                        try
-                        {
-                            CreateOrder();
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("invalid input." + e.Message);
-                            continue;
-                        }
+                        CreateOrder();
                     break;
                     case "5":
                         GetOrders();
@@ -96,9 +88,7 @@ namespace StoreUI
         {
             _customerBL.AddCustomer(GetCustomerDetails());
             Console.WriteLine("Customer Succesfully Added!");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadLine();
-            //return newCustomer;
+            AnyButton();
 
         }
         public void GetCustomers()
@@ -107,9 +97,7 @@ namespace StoreUI
             {
                 Console.WriteLine(item.ToString());
             }
-            Console.WriteLine("Press any key to continue");
-            //and function to get order history
-            Console.ReadLine();
+            AnyButton();
 
         }
         public void SearchCustomers()
@@ -119,15 +107,16 @@ namespace StoreUI
             if (foundCustomer == null)
             {
                 Console.WriteLine("No customer found.");
-                Console.WriteLine("Press any key to continue");
-                Console.ReadLine();
+                AnyButton();
             }
             else
             {
                 Console.WriteLine("customer found.");
                 Console.WriteLine(foundCustomer.ToString());
-                Console.WriteLine("Press any key to continue");
-                Console.ReadLine();
+                AnyButton();
+                Console.WriteLine("Customer Order History");
+                AnyButton();
+                //then order history
             }
         }
         public void CreateOrder()
@@ -136,8 +125,7 @@ namespace StoreUI
             Console.WriteLine("Placing Order");
             _orderBL.AddOrder(GetOrderDetails());
             Console.WriteLine("Order Succesfully placed!");
-            Console.WriteLine("Press any key to continue");
-            Console.ReadLine();
+            AnyButton();
             //return newOrder;
         }
         public void GetOrders()
@@ -146,9 +134,7 @@ namespace StoreUI
             {
                 Console.WriteLine(item.ToString());
             }
-            Console.WriteLine("Press any key to continue");
-            //then two functions to sort by Location or Customer
-            Console.ReadLine();
+            AnyButton();
         }
         public void ViewInventory()
         {
@@ -170,7 +156,6 @@ namespace StoreUI
             newCustomer.CustomerName = Console.ReadLine();
             Console.WriteLine("Enter Customer Address: ");
             newCustomer.CustomerAddress = Console.ReadLine();
-
             return newCustomer;
         }
         private Order GetOrderDetails()
@@ -200,9 +185,13 @@ namespace StoreUI
             string chosenAddress = locationList[choice2].StreetAddress;
             newOrder.OrderLocation = chosenLocation;
             newOrder.OrderAddress = chosenAddress;
-            Console.WriteLine("Press any key to continue");
             return newOrder;
         
+        }
+        public void AnyButton()
+        {
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
         }
     }
 }

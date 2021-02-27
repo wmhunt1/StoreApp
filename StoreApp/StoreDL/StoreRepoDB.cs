@@ -43,18 +43,12 @@ namespace StoreDL
         }
           public Customer GetCustomerByName(string name)
         {
-            //this method returns the hero entity, and eagerly loads the superpower entity associated with it 
-            //using the .Include() method. the .AsNoTracking() method makes sure that the enities aren't being 
-            //tracked by the change tracker. the .Select() method is used to transform each entity type to a model type
-            //The .ToList() method structures the collection into a list, and the FirstOrDefault() method searches
-            //that list for a element whose heroName is equal to the parameter
             return _context.Customers
             .AsNoTracking()
             .Select(x => _mapper.ParseCustomer(x))
             .ToList()
             .FirstOrDefault(x => x.CustomerName == name);
         }
-
         public List<Order> GetOrders()
         {
              return _context.Orders.AsNoTracking().Select(x => _mapper.ParseOrder(x)).ToList();
