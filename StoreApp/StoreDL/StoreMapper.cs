@@ -39,7 +39,8 @@ namespace StoreDL
         {
             return new Model.Order
             {
-            OrderCustomer = ParseCustomer(order.OrderCustomer),
+            //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
+            OrderCustomerId = (int)order.OrderCustomerId,
             OrderId = order.OrderId
             };
         }
@@ -50,13 +51,15 @@ namespace StoreDL
             {
                 return new Entity.Order
                 {
-                    OrderCustomer = ParseCustomer(order.OrderCustomer),
+                    //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
+                    OrderCustomerId = (int)order.OrderCustomerId,
                 };
             }
             //for updating and deletion purposes
             return new Entity.Order
             {
-                OrderCustomer = ParseCustomer(order.OrderCustomer),
+                //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
+                OrderCustomerId = (int)order.OrderCustomerId,
                 OrderId = (int)order.OrderId
             };
 

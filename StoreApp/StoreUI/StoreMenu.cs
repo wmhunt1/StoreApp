@@ -162,8 +162,8 @@ namespace StoreUI
                 i++;
             }
             var choice = Convert.ToInt32(Console.ReadLine());
-            newOrder.OrderCustomer = customerList[choice];
-            Console.WriteLine(newOrder.OrderCustomer);
+            int chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
+            newOrder.OrderCustomerId  = chosenCustomer;
             //Need to be able to select customer from list
             //next need products and quantity along with total
             //a loop to add items and quantity until done
