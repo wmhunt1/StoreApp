@@ -32,10 +32,11 @@ namespace StoreUI
                 Console.WriteLine("Welcome to Just Soup! Can we get you any soup today?");
                 Console.WriteLine("[1] Add a Customer");
                 Console.WriteLine("[2] View Customers");
-                Console.WriteLine("[3] Place Order");
-                Console.WriteLine("[4] View Orders");
-                Console.WriteLine("[5] View Inventory");
-                Console.WriteLine("[6] Replenish Inventory");
+                Console.WriteLine("[3] Search Customers");
+                Console.WriteLine("[4] Place Order");
+                Console.WriteLine("[5] View Orders");
+                Console.WriteLine("[6] View Inventory");
+                Console.WriteLine("[7] Replenish Inventory");
                 Console.WriteLine("[0] Exit Store.");
 
                 //get user input
@@ -59,6 +60,9 @@ namespace StoreUI
                         GetCustomers();
                         break;
                     case "3":
+                        SearchCustomers();
+                        break;
+                    case "4":
                         try
                         {
                             CreateOrder();
@@ -69,13 +73,13 @@ namespace StoreUI
                             continue;
                         }
                     break;
-                    case "4":
+                    case "5":
                         GetOrders();
                     break;
-                    case "5":
+                    case "6":
                        Console.WriteLine("Function not yet implemented");
                     break;
-                    case "6":
+                    case "7":
                        Console.WriteLine("Function not yet implemented");
                     break;
                     case "0":
@@ -108,8 +112,27 @@ namespace StoreUI
             Console.ReadLine();
 
         }
+        public void SearchCustomers()
+        {
+            Console.WriteLine("Enter customer full name: ");
+            Customer foundCustomer = _customerBL.GetCustomerByName(Console.ReadLine());
+            if (foundCustomer == null)
+            {
+                Console.WriteLine("No customer found.");
+                Console.WriteLine("Press any key to continue");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("customer found.");
+                Console.WriteLine(foundCustomer.ToString());
+                Console.WriteLine("Press any key to continue");
+                Console.ReadLine();
+            }
+        }
         public void CreateOrder()
         {
+            //need a thing for if no customers
             Console.WriteLine("Placing Order");
             _orderBL.AddOrder(GetOrderDetails());
             Console.WriteLine("Order Succesfully placed!");
