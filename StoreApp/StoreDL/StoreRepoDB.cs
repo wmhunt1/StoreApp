@@ -7,7 +7,7 @@ using StoreModels;
 
 namespace StoreDL
 {
-    public class StoreRepoDB : ICustomerRepository, IOrderRepository
+    public class StoreRepoDB : ICustomerRepository, IOrderRepository, ILocationRepository
     {
         private Entity.StoreDBContext _context;
         private IMapper _mapper;
@@ -28,6 +28,13 @@ namespace StoreDL
              _context.Orders.Add(_mapper.ParseOrder(newOrder));
             _context.SaveChanges();
             return newOrder;
+        }
+
+        public Location AddLocation(Location newLocation)
+        {
+             _context.Locations.Add(_mapper.ParseLocation(newLocation));
+            _context.SaveChanges();
+            return newLocation;
         }
 
         public List<Model.Customer> GetCustomers()
@@ -51,6 +58,11 @@ namespace StoreDL
         public List<Order> GetOrders()
         {
              return _context.Orders.AsNoTracking().Select(x => _mapper.ParseOrder(x)).ToList();
+            //throw new System.NotImplementedException();
+        }
+         public List<Location> GetLocations()
+        {
+             return _context.Locations.AsNoTracking().Select(x => _mapper.ParseLocation(x)).ToList();
             //throw new System.NotImplementedException();
         }
 

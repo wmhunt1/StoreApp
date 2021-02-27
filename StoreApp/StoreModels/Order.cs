@@ -1,3 +1,4 @@
+using System;
 namespace StoreModels
 {
     /// <summary>
@@ -6,9 +7,10 @@ namespace StoreModels
     public class Order
     {
        // public Customer orderCustomerId { get; set; }
-        public int orderCustomerId { get; set; }
-        public int orderId { get; set; }
-        //public Location Location { get; set; }
+        private int orderCustomerId;
+        private int orderId;
+        private string orderAddress;
+        private string orderLocation;
         //public double Total { get; set; }
 
         // private string orderCustomerName;
@@ -32,7 +34,29 @@ namespace StoreModels
         //     get { return orderCustomerId; }
         //     set { orderCustomerId = value; }
         // }
+        public string OrderLocation {
+            get {return orderLocation;}
+            set {
+                if (value == null || value.Equals(""))
+                {
+                    throw new ArgumentNullException("order store can't be empty or null");
+                }
+                orderLocation = value;
 
-        public override string ToString() => $"Order Details: \n\t Customer: {this.OrderCustomerId}";
+            }
+        }
+        public string OrderAddress {
+             get {return orderAddress;}
+            set {
+                if (value == null || value.Equals(""))
+                {
+                    throw new ArgumentNullException("order location can't be empty or null");
+                }
+                orderAddress = value;
+
+            }
+        }
+
+        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId} Store and Address: {this.OrderLocation}, {this.OrderAddress}";
     }
 }

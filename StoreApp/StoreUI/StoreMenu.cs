@@ -168,7 +168,7 @@ namespace StoreUI
             Customer newCustomer = new Customer();
             Console.WriteLine("Enter Customer Name: ");
             newCustomer.CustomerName = Console.ReadLine();
-             Console.WriteLine("Enter Customer Address: ");
+            Console.WriteLine("Enter Customer Address: ");
             newCustomer.CustomerAddress = Console.ReadLine();
 
             return newCustomer;
@@ -181,16 +181,28 @@ namespace StoreUI
             List<Customer> customerList = _customerBL.GetCustomers();
             foreach (var item in customerList)
             {
-                Console.WriteLine(i + ": " + item.CustomerName);
+                Console.WriteLine(i + ": " + item.ToString());
                 i++;
             }
             var choice = Convert.ToInt32(Console.ReadLine());
             int chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
             newOrder.OrderCustomerId  = chosenCustomer;
-            //Need to be able to select customer from list
-            //next need products and quantity along with total
-            //a loop to add items and quantity until done
+            Console.WriteLine("Select Store from List");
+            var i2 = 0;
+            List<Location> locationList = _locationBL.GetLocations();
+            foreach (var item in locationList)
+            {
+                Console.WriteLine(i2 + ": " + item.LocationName);
+                i2++;
+            }
+            var choice2 = Convert.ToInt32(Console.ReadLine());
+            string chosenLocation = locationList[choice2].LocationName;
+            string chosenAddress = locationList[choice2].StreetAddress;
+            newOrder.OrderLocation = chosenLocation;
+            newOrder.OrderAddress = chosenAddress;
+            Console.WriteLine("Press any key to continue");
             return newOrder;
+        
         }
     }
 }

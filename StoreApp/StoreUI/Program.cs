@@ -26,7 +26,7 @@ namespace StoreUI
             IMenu menu = new StoreMenu(
               new CustomerBL(new StoreRepoDB(context, new StoreMapper()))
             , new ItemBL(new ItemRepoFile())
-            , new LocationBL(new LocationRepoFile())
+            , new LocationBL(new StoreRepoDB(context, new StoreMapper()))
             , new OrderBL(new StoreRepoDB(context, new StoreMapper()))
             , new ProductBL(new ProductRepoFile()));
             menu.Start();

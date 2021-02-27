@@ -41,7 +41,9 @@ namespace StoreDL
             {
             //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
             OrderCustomerId = (int)order.OrderCustomerId,
-            OrderId = order.OrderId
+            OrderId = order.OrderId,
+            OrderLocation = order.OrderLocation,
+            OrderAddress = order.OrderAddress
             };
         }
 
@@ -53,6 +55,8 @@ namespace StoreDL
                 {
                     //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
                     OrderCustomerId = (int)order.OrderCustomerId,
+                    OrderLocation = order.OrderLocation,
+                    OrderAddress = order.OrderAddress
                 };
             }
             //for updating and deletion purposes
@@ -60,7 +64,29 @@ namespace StoreDL
             {
                 //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
                 OrderCustomerId = (int)order.OrderCustomerId,
-                OrderId = (int)order.OrderId
+                OrderId = (int)order.OrderId,
+                OrderLocation = order.OrderLocation,
+                OrderAddress = order.OrderAddress
+            };
+
+        }
+         public Model.Location ParseLocation(Entity.Location location)
+        {
+            return new Model.Location
+            {
+                LocationName = location.LocationName,
+                StreetAddress = location.StreetAddress,
+            };
+        }
+
+        public Entity.Location ParseLocation(Model.Location location)
+        {
+           
+            //for updating and deletion purposes
+            return new Entity.Location
+            {
+                LocationName = location.LocationName,
+                StreetAddress = location.StreetAddress,
             };
 
         }

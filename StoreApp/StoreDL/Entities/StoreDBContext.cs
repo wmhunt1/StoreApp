@@ -18,7 +18,9 @@ namespace StoreDL.Entities
         }
 
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Location> Locations { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,19 +45,50 @@ namespace StoreDL.Entities
                     .HasColumnName("customerName");
             });
 
+            modelBuilder.Entity<Location>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("locations");
+
+                entity.Property(e => e.LocationName)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("locationName");
+
+                entity.Property(e => e.StreetAddress)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("streetAddress");
+            });
+
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.ToTable("orders");
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
+                entity.Property(e => e.OrderAddress)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("orderAddress");
+
                 entity.Property(e => e.OrderCustomerId).HasColumnName("orderCustomerId");
+
+                entity.Property(e => e.OrderLocation)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("orderLocation");
 
                 entity.HasOne(d => d.OrderCustomer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderCustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__orderCus__17F790F9");
+                    .HasConstraintName("FK__orders__orderCus__1CBC4616");
             });
 
             OnModelCreatingPartial(modelBuilder);
