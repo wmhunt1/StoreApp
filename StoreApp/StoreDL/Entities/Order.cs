@@ -11,6 +11,8 @@ namespace StoreDL.Entities
         public int OrderCustomerId { get; set; }
         public string OrderAddress { get; set; }
         public string OrderLocation { get; set; }
+        public int OrderQuantity { get; set; }
+        public decimal OrderTotal { get; set; }
 
         public virtual Customer OrderCustomer { get; set; }
     }

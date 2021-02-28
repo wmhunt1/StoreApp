@@ -86,11 +86,17 @@ namespace StoreDL.Entities
                     .IsUnicode(false)
                     .HasColumnName("orderLocation");
 
+                entity.Property(e => e.OrderQuantity).HasColumnName("orderQuantity");
+
+                entity.Property(e => e.OrderTotal)
+                    .HasColumnType("decimal(18, 0)")
+                    .HasColumnName("orderTotal");
+
                 entity.HasOne(d => d.OrderCustomer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderCustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__orderCus__1CBC4616");
+                    .HasConstraintName("FK__orders__orderCus__22751F6C");
             });
 
             modelBuilder.Entity<Product>(entity =>

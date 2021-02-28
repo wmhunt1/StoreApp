@@ -27,5 +27,12 @@ namespace StoreBL
         {
             return _repo.GetLocationByName(name);
         }
+         public void UpdateLocation(Location location2BUpdated, Location updatedDetails)
+        {
+            location2BUpdated.LocationName = updatedDetails.LocationName;
+            location2BUpdated.StreetAddress = updatedDetails.StreetAddress;
+            location2BUpdated.LocationInventory = updatedDetails.LocationInventory;
+            _repo.UpdateLocation(location2BUpdated);
+        }
     }
 }

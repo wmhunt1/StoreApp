@@ -78,7 +78,7 @@ namespace StoreUI
                        SearchLocations();
                     break;
                     case "7":
-                       Console.WriteLine("Function not yet implemented");
+                       ReplenishInventory();
                     break;
                      case "8":
                         order = true;
@@ -168,7 +168,29 @@ namespace StoreUI
         public void ReplenishInventory()
         {
             Console.WriteLine("Replenishing Inventory");
+            // Console.WriteLine("Enter store name");
+            // Location location2BUpdated = _locationBL.GetLocationByName(Console.ReadLine());
+            // if (location2BUpdated == null)
+            // {
+            //     Console.WriteLine("Location not found");
+            // }
+            // else
+            // {
+            //     AnyButton();
+            //     _locationBL.UpdateLocation(location2BUpdated, GetLocationDetails(location2BUpdated));
+            //     Console.WriteLine("Inventory Replenished");
+            // }
+               AnyButton();
         }
+            // private Location GetLocationDetails(Location x)
+            // {
+            // Location newLocation = new Location();
+            // newLocation.LocationName = x.LocationName;
+            // newLocation.StreetAddress = x.StreetAddress;
+            // newLocation.LocationInventory = 200;
+
+            // return newLocation;
+            // }
             private Customer GetCustomerDetails()
         {
             Console.WriteLine("Adding Customer");
@@ -177,7 +199,9 @@ namespace StoreUI
             newCustomer.CustomerName = Console.ReadLine();
             Console.WriteLine("Enter Customer Address: ");
             newCustomer.CustomerAddress = Console.ReadLine();
+
             return newCustomer;
+            
         }
         private Order GetOrderDetails()
         {
@@ -202,6 +226,25 @@ namespace StoreUI
                 Console.WriteLine(j + ": " + item.ProductName + ", $" + item.Price);
                 j++;
             }
+            Console.WriteLine("How many cans of soup would you like to buy?");
+            newOrder.OrderQuantity = Convert.ToInt32(Console.ReadLine());
+            bool shopping = true;
+            while (shopping == true)
+            {
+                Console.WriteLine($"You have bought {newOrder.OrderQuantity} cans. Would you like to add more cans? Y/N");
+                string keepShopping = Console.ReadLine();
+                if (keepShopping == "Y")
+                {
+                      Console.WriteLine("How many cans of soup would you like to buy?");
+                      int moreCans = Convert.ToInt32(Console.ReadLine());
+                      newOrder.OrderQuantity = moreCans + newOrder.OrderQuantity;
+                }
+                else
+                {
+                    shopping = false;
+                }
+            }
+            newOrder.OrderTotal = newOrder.OrderQuantity*productList[0].Price;
             Console.WriteLine("Select Store from List");
             var k = 0;
             List<Location> locationList = _locationBL.GetLocations();
@@ -215,6 +258,7 @@ namespace StoreUI
             string chosenAddress = locationList[choice2].StreetAddress;
             newOrder.OrderLocation = chosenLocation;
             newOrder.OrderAddress = chosenAddress;
+            Console.WriteLine(newOrder.ToString());
             return newOrder;
         
         }

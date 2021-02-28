@@ -22,6 +22,8 @@ create table orders
     foreign key (orderCustomerId) references customers(customerId),
     orderAddress varchar(100) not null,
     orderLocation varchar(100) not null,
+    orderQuantity int not null,
+    orderTotal decimal not null
 
 );
 

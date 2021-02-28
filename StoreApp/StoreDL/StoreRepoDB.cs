@@ -84,13 +84,15 @@ namespace StoreDL
             .ToList()
             .FirstOrDefault(x => x.LocationName == name);
         }
-        // public void UpdateCustomer(Customer customer2BUpdated)
-        // {
-        //     Entity.Customer oldCustomer = _context.Customers.Find(customer2BUpdated.CId);
-        //     _context.Entry(oldCustomer).CurrentValues.SetValues(_mapper.ParseCustomer(custmer2BUpdated));
+           public void UpdateLocation(Location location2BUpdated)
+        {
+            Entity.Location oldLocation = _context.Locations.Find(location2BUpdated.LocationName);
+            _context.Entry(oldLocation).CurrentValues.SetValues(_mapper.ParseLocation(location2BUpdated));
 
-        //     _context.SaveChanges();
-        //     _context.ChangeTracker.Clear();
-        // }
+            _context.SaveChanges();
+
+            //This method clears the change tracker to drop all tracked entities
+            _context.ChangeTracker.Clear();
+        }
     }
 }

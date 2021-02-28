@@ -56,7 +56,9 @@ namespace StoreDL
                     //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
                     OrderCustomerId = (int)order.OrderCustomerId,
                     OrderLocation = order.OrderLocation,
-                    OrderAddress = order.OrderAddress
+                    OrderAddress = order.OrderAddress,
+                    OrderQuantity = order.OrderQuantity,
+                    OrderTotal = order.OrderTotal
                 };
             }
             //for updating and deletion purposes
@@ -66,7 +68,9 @@ namespace StoreDL
                 OrderCustomerId = (int)order.OrderCustomerId,
                 OrderId = (int)order.OrderId,
                 OrderLocation = order.OrderLocation,
-                OrderAddress = order.OrderAddress
+                OrderAddress = order.OrderAddress,
+                OrderQuantity = order.OrderQuantity,
+                OrderTotal = order.OrderTotal
             };
 
         }

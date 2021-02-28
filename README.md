@@ -3,12 +3,8 @@ Template for the .NET P0 Store App
 
 Borrowed some boiler plate code from TourofHeroes
 Store App
-Overview:
-    The store app is a software that helps customers purchase products from your business. Designed with functionality that would make virtual shopping much simpler!
 
 Functionality:
-view location inventory (need to implement location inventory)
-The customer should be able to purchase multiple products
 Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive)
 The manager should be able to replenish inventory
 
