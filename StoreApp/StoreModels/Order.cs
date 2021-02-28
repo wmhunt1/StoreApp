@@ -60,9 +60,13 @@ namespace StoreModels
 
             }
         }
-        public int OrderQuantity {get; set;}
-        public decimal OrderTotal {get; set;}
+        public int OrderQuantity 
+        {get {return orderQuantity;}
+        set {orderQuantity = value;}}
+        public decimal OrderTotal 
+         {get {return orderTotal;}
+        set {orderTotal = value;}}
 
-        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId}, {this.OrderQuantity} Cans of Soup for {this.OrderTotal}, Store and Address: {this.OrderLocation}, {this.OrderAddress}";
+        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId}, {this.OrderQuantity} Cans of Soup for {this.OrderTotal}, Store and Address: {this.OrderLocation}";
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using StoreModels;
+using System.Linq;
 using StoreBL;
 using System.Collections;
 using System.Collections.Generic;
@@ -164,6 +165,22 @@ namespace StoreUI
                 Console.WriteLine(item.ToString());
             }
             AnyButton();
+            Console.WriteLine("Would you like to sort the orders by total? Y/N");
+            string sortChoice = Console.ReadLine();
+             List<Order> orderList = _orderBL.GetOrders();
+            List<Order> sorted = orderList.OrderBy(x => x.OrderTotal)
+                                    .ThenBy(x => x.OrderCustomerId)
+                                    .ToList();
+            if (sortChoice == "Y")
+            {
+                Console.WriteLine(String.Join(Environment.NewLine, sorted));
+            }
+            else
+            {
+
+            }
+            AnyButton();
+            
         }
         public void ReplenishInventory()
         {

@@ -57,8 +57,8 @@ namespace StoreDL
                     OrderCustomerId = (int)order.OrderCustomerId,
                     OrderLocation = order.OrderLocation,
                     OrderAddress = order.OrderAddress,
-                    OrderQuantity = order.OrderQuantity,
-                    OrderTotal = order.OrderTotal
+                    OrderQuantity = (int)order.OrderQuantity,
+                    OrderTotal = (decimal)order.OrderTotal
                 };
             }
             //for updating and deletion purposes
@@ -69,8 +69,8 @@ namespace StoreDL
                 OrderId = (int)order.OrderId,
                 OrderLocation = order.OrderLocation,
                 OrderAddress = order.OrderAddress,
-                OrderQuantity = order.OrderQuantity,
-                OrderTotal = order.OrderTotal
+                OrderQuantity = (int)order.OrderQuantity,
+                OrderTotal = (decimal)order.OrderTotal
             };
 
         }
