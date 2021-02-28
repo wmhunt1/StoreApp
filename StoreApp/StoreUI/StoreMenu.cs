@@ -263,17 +263,17 @@ namespace StoreUI
         {
             Console.WriteLine("Location Inventory");
             inventory = false;
-            //  foreach (var item in _orderBL.GetOrders())
-            // {
-            //     if (item.OrderLocation == x)
-            //     {
-            //         Console.WriteLine(item.ToString());
-            //     }
-            //     else
-            //     {
-            //         //Console.WriteLine("Customer has no order history");
-            //     }
-            // }
+             foreach (var item in _locationBL.GetLocations())
+            {
+                if (item.LocationName == x)
+                {
+                    Console.WriteLine(item.GetInventory());
+                }
+                else
+                {
+                    //Console.WriteLine("Customer has no order history");
+                }
+            }
         }
         public void AnyButton()
         {

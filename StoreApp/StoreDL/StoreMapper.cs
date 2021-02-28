@@ -76,6 +76,7 @@ namespace StoreDL
             {
                 LocationName = location.LocationName,
                 StreetAddress = location.StreetAddress,
+                LocationInventory = location.LocationInventory
             };
         }
 
@@ -87,6 +88,7 @@ namespace StoreDL
             {
                 LocationName = location.LocationName,
                 StreetAddress = location.StreetAddress,
+                LocationInventory = location.LocationInventory
             };
 
         }

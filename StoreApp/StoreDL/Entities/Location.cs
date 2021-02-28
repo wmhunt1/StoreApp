@@ -9,5 +9,6 @@ namespace StoreDL.Entities
     {
         public string StreetAddress { get; set; }
         public string LocationName { get; set; }
+        public int LocationInventory { get; set; }
     }
 }

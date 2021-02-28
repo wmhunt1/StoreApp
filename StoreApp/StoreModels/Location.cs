@@ -9,6 +9,8 @@ namespace StoreModels
     {
         private string streetAddress;
         private string locationName;
+
+        private int locationInventory;
         public string StreetAddress {
             get {return streetAddress;}
             set {
@@ -31,7 +33,9 @@ namespace StoreModels
 
             }
         }
+        public int LocationInventory {get; set;}
         public override string ToString() => $"Location: {this.LocationName}";
+        public string GetInventory() => $"{this.LocationInventory} cans of soup";
         //TODO: add some property for the location inventory
     }
 }

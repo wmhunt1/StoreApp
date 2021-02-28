@@ -28,7 +28,8 @@ create table orders
 create table locations
 (
     streetAddress varchar(100) not null,
-    locationName varchar(100) not null
+    locationName varchar(100) not null,
+    locationInventory int not null 
 );
 create table products
 (
@@ -37,6 +38,6 @@ create table products
 );
 
 insert into products (productName, price) VALUES 
-('Soup', $3.50), ('Clothes', $19.99)
-insert into locations (streetAddress, locationName) VALUES
-('1 Road Street', 'Main Location'), ('2 Road Steet', 'Branch Location');
+('Soup', $3.50)
+insert into locations (streetAddress, locationName, locationInventory) VALUES
+('1 Road Street', 'Main Location', 100), ('2 Road Steet', 'Branch Location', 100);

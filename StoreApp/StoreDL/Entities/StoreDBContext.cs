@@ -51,6 +51,8 @@ namespace StoreDL.Entities
 
                 entity.ToTable("locations");
 
+                entity.Property(e => e.LocationInventory).HasColumnName("locationInventory");
+
                 entity.Property(e => e.LocationName)
                     .IsRequired()
                     .HasMaxLength(100)
