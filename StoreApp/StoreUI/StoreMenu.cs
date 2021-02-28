@@ -243,8 +243,7 @@ namespace StoreUI
                 Console.WriteLine(j + ": " + item.ProductName + ", $" + item.Price);
                 j++;
             }
-            Console.WriteLine("How many cans of soup would you like to buy?");
-            newOrder.OrderQuantity = Convert.ToInt32(Console.ReadLine());
+            newOrder.OrderQuantity = GetInputInt("How many cans of soup would you like to buy?");
             bool shopping = true;
             while (shopping == true)
             {
@@ -252,8 +251,8 @@ namespace StoreUI
                 string keepShopping = Console.ReadLine();
                 if (keepShopping == "Y")
                 {
-                      Console.WriteLine("How many cans of soup would you like to buy?");
-                      int moreCans = Convert.ToInt32(Console.ReadLine());
+                      Console.WriteLine();
+                      int moreCans = GetInputInt("How many cans of soup would you like to buy?");
                       newOrder.OrderQuantity = moreCans + newOrder.OrderQuantity;
                 }
                 else
@@ -262,7 +261,6 @@ namespace StoreUI
                 }
             }
             newOrder.OrderTotal = newOrder.OrderQuantity*productList[0].Price;
-            Console.WriteLine("Select Store from List");
             var k = 0;
             List<Location> locationList = _locationBL.GetLocations();
             foreach (var item in locationList)
@@ -270,7 +268,7 @@ namespace StoreUI
                 Console.WriteLine(k + ": " + item.LocationName);
                 k++;
             }
-            var choice2 = Convert.ToInt32(Console.ReadLine());
+            var choice2 = GetInputInt("Select Store from List");
             string chosenLocation = locationList[choice2].LocationName;
             string chosenAddress = locationList[choice2].StreetAddress;
             newOrder.OrderLocation = chosenLocation;
@@ -348,5 +346,28 @@ namespace StoreUI
         public void Test(){
          
         }
+         public static void GetInput(String str)
+       {
+            str = String.Format(" - {0}: ", str);
+            Console.Write(str);
+       }
+        public static int GetInputInt(string message)
+       {
+            int input = -10;
+            while (input == -10)
+            {
+               try 
+               {
+                    GetInput(message);
+                    input = Convert.ToInt32(Console.ReadLine());
+               }
+               catch(Exception e) //Error
+               {
+                    input = -10;
+                    Console.WriteLine(e.Message);
+               }
+            }
+            return input;
+       }
     }
 }
