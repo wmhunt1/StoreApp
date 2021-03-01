@@ -8,8 +8,4 @@ Additional requirements:
 Exception Handling
 Input validation
 DB structure should be 3NF
-Should have an ER Diagram
 Code should have xml documentation
-
-Tech Stack:
-Xunit
