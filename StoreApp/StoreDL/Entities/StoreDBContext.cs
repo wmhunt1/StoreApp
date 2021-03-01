@@ -47,11 +47,15 @@ namespace StoreDL.Entities
 
             modelBuilder.Entity<Location>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("locations");
 
-                entity.Property(e => e.LocationInventory).HasColumnName("locationInventory");
+                entity.Property(e => e.LocationId).HasColumnName("locationId");
+
+                entity.Property(e => e.LocationInventory1).HasColumnName("locationInventory1");
+
+                entity.Property(e => e.LocationInventory2).HasColumnName("locationInventory2");
+
+                entity.Property(e => e.LocationInventory3).HasColumnName("locationInventory3");
 
                 entity.Property(e => e.LocationName)
                     .IsRequired()
@@ -72,19 +76,9 @@ namespace StoreDL.Entities
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
-                entity.Property(e => e.OrderAddress)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("orderAddress");
-
                 entity.Property(e => e.OrderCustomerId).HasColumnName("orderCustomerId");
 
-                entity.Property(e => e.OrderLocation)
-                    .IsRequired()
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("orderLocation");
+                entity.Property(e => e.OrderLocationId).HasColumnName("orderLocationId");
 
                 entity.Property(e => e.OrderQuantity1).HasColumnName("orderQuantity1");
 
@@ -100,7 +94,13 @@ namespace StoreDL.Entities
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.OrderCustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__orders__orderCus__25518C17");
+                    .HasConstraintName("FK__orders__orderCus__2A164134");
+
+                entity.HasOne(d => d.OrderLocation)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.OrderLocationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__orders__orderLoc__2B0A656D");
             });
 
             modelBuilder.Entity<Product>(entity =>

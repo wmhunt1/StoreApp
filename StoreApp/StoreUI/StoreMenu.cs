@@ -44,7 +44,7 @@ namespace StoreUI
                 Console.WriteLine("[6] View Inventory By Location");
                 Console.WriteLine("[7] Replenish Inventory");
                 Console.WriteLine("[8] Order History by Location");
-                Console.WriteLine("[9] Test");
+                //Console.WriteLine("[9] Test");
                 Console.WriteLine("[0] Exit Store.");
 
                 //get user input
@@ -89,9 +89,9 @@ namespace StoreUI
                         //location order history
                         SearchLocations();
                         break;
-                    case "9":
-                        Test();
-                        break;
+                    // case "9":
+                    //     Test();
+                    //     break;
                     case "0":
                         stay = false;
                         ExitRemarks();
@@ -243,6 +243,7 @@ namespace StoreUI
             List<Product> productList = _productBL.GetProducts();
             while (shopping == true)
             {
+                
                 var j = 0;
                 foreach (var item in productList)
                 {
@@ -264,7 +265,7 @@ namespace StoreUI
                     newOrder.OrderQuantity3 = GetInputInt($"How many {chosenProduct.ProductName} would you like to buy?");
                 }
 
-                Console.WriteLine($"Would you like to continue shoping? Y/N");
+                Console.WriteLine($"Would you like to continue shopping? Y/N");
                 string keepShopping = Console.ReadLine();
                 if (keepShopping == "Y")
                 {
@@ -307,10 +308,8 @@ namespace StoreUI
                 k++;
             }
             var choice2 = GetInputInt("Select Store from List");
-            string chosenLocation = locationList[choice2].LocationName;
-            string chosenAddress = locationList[choice2].StreetAddress;
-            newOrder.OrderLocation = chosenLocation;
-            newOrder.OrderAddress = chosenAddress;
+            Location chosenLocation = locationList[choice2];
+            newOrder.OrderLocationId = Convert.ToInt32(chosenLocation.LocationId);
             Console.WriteLine(newOrder.ToString());
             return newOrder;
 
@@ -330,23 +329,23 @@ namespace StoreUI
                 Console.WriteLine(foundLocation.ToString());
                 AnyButton();
                 Console.WriteLine("Location Order History");
-                string foundName = foundLocation.LocationName;
+                int foundId = Convert.ToInt32(foundLocation.LocationId);
                 if (order == true)
                 {
-                    LocationOrderHistory(foundName);
+                    LocationOrderHistory(foundId);
                 }
                 else
                 {
-                    LocationInventory(foundName);
+                    LocationInventory(foundId);
                 }
                 AnyButton();
             }
         }
-        public void LocationOrderHistory(string x)
+        public void LocationOrderHistory(int x)
         {
             foreach (var item in _orderBL.GetOrders())
             {
-                if (item.OrderLocation == x)
+                if (item.OrderLocationId == x)
                 {
                     Console.WriteLine(item.ToString());
                 }
@@ -356,13 +355,13 @@ namespace StoreUI
             }
             order = false;
         }
-        public void LocationInventory(string x)
+        public void LocationInventory(int x)
         {
             Console.WriteLine("Location Inventory");
             inventory = false;
             foreach (var item in _locationBL.GetLocations())
             {
-                if (item.LocationName == x)
+                if (item.LocationId == x)
                 {
                     Console.WriteLine(item.GetInventory());
                 }

@@ -39,15 +39,13 @@ namespace StoreDL
         {
             return new Model.Order
             {
-                //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
+
                 OrderCustomerId = (int)order.OrderCustomerId,
-                OrderId = order.OrderId,
-                OrderLocation = order.OrderLocation,
-                OrderAddress = order.OrderAddress,
+                OrderLocationId = (int)order.OrderLocationId,
                 OrderQuantity1 = (int)order.OrderQuantity1,
                 OrderQuantity2 = (int)order.OrderQuantity2,
                 OrderQuantity3 = (int)order.OrderQuantity3,
-                 OrderTotal = (decimal)order.OrderTotal
+                OrderTotal = (decimal)order.OrderTotal
             };
         }
 
@@ -57,10 +55,8 @@ namespace StoreDL
             {
                 return new Entity.Order
                 {
-                    //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
                     OrderCustomerId = (int)order.OrderCustomerId,
-                    OrderLocation = order.OrderLocation,
-                    OrderAddress = order.OrderAddress,
+                    OrderLocationId = (int)order.OrderLocationId,
                     OrderQuantity1 = (int)order.OrderQuantity1,
                     OrderQuantity2 = (int)order.OrderQuantity2,
                     OrderQuantity3 = (int)order.OrderQuantity3,
@@ -70,11 +66,9 @@ namespace StoreDL
             //for updating and deletion purposes
             return new Entity.Order
             {
-                //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
                 OrderCustomerId = (int)order.OrderCustomerId,
                 OrderId = (int)order.OrderId,
-                OrderLocation = order.OrderLocation,
-                OrderAddress = order.OrderAddress,
+                OrderLocationId = (int)order.OrderLocationId,
                 OrderQuantity1 = (int)order.OrderQuantity1,
                 OrderQuantity2 = (int)order.OrderQuantity2,
                 OrderQuantity3 = (int)order.OrderQuantity3,
@@ -86,9 +80,13 @@ namespace StoreDL
         {
             return new Model.Location
             {
+                
+                LocationId = (int)location.LocationId,
                 LocationName = location.LocationName,
                 StreetAddress = location.StreetAddress,
-                LocationInventory = location.LocationInventory
+                LocationInventory1 = (int)location.LocationInventory1,
+                LocationInventory2 = (int)location.LocationInventory3,
+                LocationInventory3 = (int)location.LocationInventory3
             };
         }
 
@@ -98,9 +96,13 @@ namespace StoreDL
             //for updating and deletion purposes
             return new Entity.Location
             {
+                LocationId = (int)location.LocationId,
                 LocationName = location.LocationName,
                 StreetAddress = location.StreetAddress,
-                LocationInventory = location.LocationInventory
+                LocationInventory1 = (int)location.LocationInventory1,
+                LocationInventory2 = (int)location.LocationInventory2,
+                LocationInventory3 = (int)location.LocationInventory3,
+
             };
 
         }
