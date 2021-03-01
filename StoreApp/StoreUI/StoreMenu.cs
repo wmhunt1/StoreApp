@@ -4,6 +4,7 @@ using System.Linq;
 using StoreBL;
 using System.Collections;
 using System.Collections.Generic;
+using NLog;
 namespace StoreUI
 {
     public class StoreMenu : IMenu
@@ -14,6 +15,8 @@ namespace StoreUI
         private ILocationBL _locationBL;
         private IOrderBL _orderBL;
         private IProductBL _productBL;
+
+        private static Logger logger = LogManager.GetCurrentClassLogger(); 
         public StoreMenu(ICustomerBL customerBL,IItemBL itemBL, ILocationBL locationBL, IOrderBL orderBL, IProductBL productBL)
         {
             _customerBL = customerBL;
@@ -154,7 +157,8 @@ namespace StoreUI
             //need a thing for if no customers
             Console.WriteLine("Placing Order");
             _orderBL.AddOrder(GetOrderDetails());
-            Console.WriteLine("Order Succesfully placed!");
+            Console.WriteLine("Order Succesfully placed at...");
+            logger.Error("");  
             AnyButton();
             //return newOrder;
         }
@@ -223,7 +227,6 @@ namespace StoreUI
         private Order GetOrderDetails()
         {
             Order newOrder = new Order();
-            Console.WriteLine("Select Customer from List");
             var i = 0;
             List<Customer> customerList = _customerBL.GetCustomers();
             foreach (var item in customerList)
@@ -231,7 +234,7 @@ namespace StoreUI
                 Console.WriteLine(i + ": " + item.ToString());
                 i++;
             }
-            var choice = Convert.ToInt32(Console.ReadLine());
+            var choice = GetInputInt("Select Customer from List");
             int chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
             newOrder.OrderCustomerId  = chosenCustomer;
             Console.WriteLine("Add Items to Cart");

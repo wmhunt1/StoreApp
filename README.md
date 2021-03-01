@@ -18,10 +18,8 @@ Note: add as much models as you would need for your design
 Additional requirements:
 Exception Handling
 Input validation
-Logging
 At least 10 unit tests
 Data should be persisted, (no data should be hard coded)
-You should use SQLServer DB
 DB structure should be 3NF
 Should have an ER Diagram
 Code should have xml documentation
