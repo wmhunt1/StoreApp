@@ -17,7 +17,7 @@ namespace StoreBL
             //Todo: Add BL
             _repo.AddCustomer(newCustomer);
         }
-         public Customer GetCustomerByName(string name)
+        public Customer GetCustomerByName(string name)
         {
             //Todo: check if the name given is not null or empty string 
             return _repo.GetCustomerByName(name);
@@ -27,6 +27,6 @@ namespace StoreBL
             //TODO add BL
             return _repo.GetCustomers();
         }
-        
+
     }
 }

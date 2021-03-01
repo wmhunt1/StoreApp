@@ -86,7 +86,7 @@ namespace StoreDL
         }
            public void UpdateLocation(Location location2BUpdated)
         {
-            Entity.Location oldLocation = _context.Locations.Find(location2BUpdated.LocationName);
+            Entity.Location oldLocation = _context.Locations.Find(location2BUpdated.LocationId);
             _context.Entry(oldLocation).CurrentValues.SetValues(_mapper.ParseLocation(location2BUpdated));
 
             _context.SaveChanges();

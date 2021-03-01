@@ -189,29 +189,31 @@ namespace StoreUI
         public void ReplenishInventory()
         {
             Console.WriteLine("Replenishing Inventory");
-            // Console.WriteLine("Enter store name");
-            // Location location2BUpdated = _locationBL.GetLocationByName(Console.ReadLine());
-            // if (location2BUpdated == null)
-            // {
-            //     Console.WriteLine("Location not found");
-            // }
-            // else
-            // {
-            //     AnyButton();
-            //     _locationBL.UpdateLocation(location2BUpdated, GetLocationDetails(location2BUpdated));
-            //     Console.WriteLine("Inventory Replenished");
-            // }
+            Console.WriteLine("Enter store name");
+            Location location2BUpdated = _locationBL.GetLocationByName(Console.ReadLine());
+            if (location2BUpdated == null)
+            {
+                Console.WriteLine("Location not found");
+            }
+            else
+            {
+                AnyButton();
+                _locationBL.UpdateLocation(location2BUpdated, GetLocationDetails(location2BUpdated, 100, 100, 100));
+                Console.WriteLine("Inventory Replenished");
+            }
             AnyButton();
         }
-        // private Location GetLocationDetails(Location x)
-        // {
-        // Location newLocation = new Location();
-        // newLocation.LocationName = x.LocationName;
-        // newLocation.StreetAddress = x.StreetAddress;
-        // newLocation.LocationInventory = 200;
+        private Location GetLocationDetails(Location x, int a, int b, int c)
+        {
+            Location newLocation = new Location();
+            newLocation.LocationName = x.LocationName;
+            newLocation.StreetAddress = x.StreetAddress;
+            newLocation.LocationInventory1 = a;
+            newLocation.LocationInventory2 = b;
+            newLocation.LocationInventory3 = c;
 
-        // return newLocation;
-        // }
+            return newLocation;
+        }
         private Customer GetCustomerDetails()
         {
             Console.WriteLine("Adding Customer");
@@ -243,7 +245,7 @@ namespace StoreUI
             List<Product> productList = _productBL.GetProducts();
             while (shopping == true)
             {
-                
+
                 var j = 0;
                 foreach (var item in productList)
                 {
@@ -311,6 +313,10 @@ namespace StoreUI
             Location chosenLocation = locationList[choice2];
             newOrder.OrderLocationId = Convert.ToInt32(chosenLocation.LocationId);
             Console.WriteLine(newOrder.ToString());
+            int newInv1 = chosenLocation.LocationInventory1 - newOrder.OrderQuantity1;
+            int newInv2 = chosenLocation.LocationInventory2 - newOrder.OrderQuantity2;
+            int newInv3 = chosenLocation.LocationInventory3 - newOrder.OrderQuantity3;
+            _locationBL.UpdateLocation(chosenLocation, GetLocationDetails(chosenLocation, newInv1, newInv2, newInv3));
             return newOrder;
 
         }

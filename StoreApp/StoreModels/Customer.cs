@@ -25,7 +25,7 @@ namespace StoreModels
 
             }
         }
-         public string CustomerAddress
+        public string CustomerAddress
         {
             get { return customerAddress; }
             set
