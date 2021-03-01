@@ -16,15 +16,15 @@ namespace StoreUI
         private IOrderBL _orderBL;
         private IProductBL _productBL;
 
-        private static Logger logger = LogManager.GetCurrentClassLogger(); 
-        public StoreMenu(ICustomerBL customerBL,IItemBL itemBL, ILocationBL locationBL, IOrderBL orderBL, IProductBL productBL)
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+        public StoreMenu(ICustomerBL customerBL, IItemBL itemBL, ILocationBL locationBL, IOrderBL orderBL, IProductBL productBL)
         {
             _customerBL = customerBL;
             _itemBL = itemBL;
             _locationBL = locationBL;
             _orderBL = orderBL;
             _productBL = productBL;
-            
+
         }
         Boolean inventory = false;
         Boolean order = false;
@@ -33,7 +33,7 @@ namespace StoreUI
             Boolean stay = true;
             do
             {
-              //menu options part
+                //menu options part
                 Console.WriteLine("=====================[Just Soup]=====================");
                 Console.WriteLine("Welcome to Just Soup! Can we get you any soup today?");
                 Console.WriteLine("[1] Add a Customer");
@@ -63,7 +63,7 @@ namespace StoreUI
                             Console.WriteLine("invalid input." + e.Message);
                             continue;
                         }
-                    break;
+                        break;
                     case "2":
                         GetCustomers();
                         break;
@@ -72,26 +72,26 @@ namespace StoreUI
                         break;
                     case "4":
                         CreateOrder();
-                    break;
+                        break;
                     case "5":
                         GetOrders();
-                    break;
+                        break;
                     case "6":
-                    //inventory by location
-                        inventory = true; 
-                       SearchLocations();
-                    break;
-                    case "7":
-                       ReplenishInventory();
-                    break;
-                     case "8":
-                        order = true;
-                     //location order history
+                        //inventory by location
+                        inventory = true;
                         SearchLocations();
-                    break;
+                        break;
+                    case "7":
+                        ReplenishInventory();
+                        break;
+                    case "8":
+                        order = true;
+                        //location order history
+                        SearchLocations();
+                        break;
                     case "9":
                         Test();
-                    break;
+                        break;
                     case "0":
                         stay = false;
                         ExitRemarks();
@@ -158,7 +158,7 @@ namespace StoreUI
             Console.WriteLine("Placing Order");
             _orderBL.AddOrder(GetOrderDetails());
             Console.WriteLine("Order Succesfully placed at...");
-            logger.Error("");  
+            logger.Error("");
             AnyButton();
             //return newOrder;
         }
@@ -171,7 +171,7 @@ namespace StoreUI
             AnyButton();
             Console.WriteLine("Would you like to sort the orders by total? Y/N");
             string sortChoice = Console.ReadLine();
-             List<Order> orderList = _orderBL.GetOrders();
+            List<Order> orderList = _orderBL.GetOrders();
             List<Order> sorted = orderList.OrderBy(x => x.OrderTotal)
                                     .ThenBy(x => x.OrderCustomerId)
                                     .ToList();
@@ -184,7 +184,7 @@ namespace StoreUI
 
             }
             AnyButton();
-            
+
         }
         public void ReplenishInventory()
         {
@@ -201,18 +201,18 @@ namespace StoreUI
             //     _locationBL.UpdateLocation(location2BUpdated, GetLocationDetails(location2BUpdated));
             //     Console.WriteLine("Inventory Replenished");
             // }
-               AnyButton();
+            AnyButton();
         }
-            // private Location GetLocationDetails(Location x)
-            // {
-            // Location newLocation = new Location();
-            // newLocation.LocationName = x.LocationName;
-            // newLocation.StreetAddress = x.StreetAddress;
-            // newLocation.LocationInventory = 200;
+        // private Location GetLocationDetails(Location x)
+        // {
+        // Location newLocation = new Location();
+        // newLocation.LocationName = x.LocationName;
+        // newLocation.StreetAddress = x.StreetAddress;
+        // newLocation.LocationInventory = 200;
 
-            // return newLocation;
-            // }
-            private Customer GetCustomerDetails()
+        // return newLocation;
+        // }
+        private Customer GetCustomerDetails()
         {
             Console.WriteLine("Adding Customer");
             Customer newCustomer = new Customer();
@@ -222,7 +222,7 @@ namespace StoreUI
             newCustomer.CustomerAddress = Console.ReadLine();
 
             return newCustomer;
-            
+
         }
         private Order GetOrderDetails()
         {
@@ -236,34 +236,69 @@ namespace StoreUI
             }
             var choice = GetInputInt("Select Customer from List");
             int chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
-            newOrder.OrderCustomerId  = chosenCustomer;
+            newOrder.OrderCustomerId = chosenCustomer;
             Console.WriteLine("Add Items to Cart");
             AnyButton();
-            var j = 0;
-            List<Product> productList = _productBL.GetProducts();
-            foreach (var item in productList)
-            {
-                Console.WriteLine(j + ": " + item.ProductName + ", $" + item.Price);
-                j++;
-            }
-            newOrder.OrderQuantity = GetInputInt("How many cans of soup would you like to buy?");
             bool shopping = true;
+            List<Product> productList = _productBL.GetProducts();
             while (shopping == true)
             {
-                Console.WriteLine($"You have bought {newOrder.OrderQuantity} cans. Would you like to add more cans? Y/N");
+                var j = 0;
+                foreach (var item in productList)
+                {
+                    Console.WriteLine(j + ": " + item.ProductName + ", $" + item.Price);
+                    j++;
+                }
+                var choice3 = GetInputInt("Which product would you like to buy?");
+                Product chosenProduct = productList[choice3];
+                if (chosenProduct.ProductName == "Soup")
+                {
+                    newOrder.OrderQuantity1 = GetInputInt($"How many {chosenProduct.ProductName} would you like to buy?");
+                }
+                else if (chosenProduct.ProductName == "Spoons")
+                {
+                    newOrder.OrderQuantity2 = GetInputInt($"How many {chosenProduct.ProductName} would you like to buy?");
+                }
+                else
+                {
+                    newOrder.OrderQuantity3 = GetInputInt($"How many {chosenProduct.ProductName} would you like to buy?");
+                }
+
+                Console.WriteLine($"Would you like to continue shoping? Y/N");
                 string keepShopping = Console.ReadLine();
                 if (keepShopping == "Y")
                 {
-                      Console.WriteLine();
-                      int moreCans = GetInputInt("How many cans of soup would you like to buy?");
-                      newOrder.OrderQuantity = moreCans + newOrder.OrderQuantity;
+                    var l = 0;
+                    foreach (var item in productList)
+                    {
+                        Console.WriteLine((l + ": " + item.ProductName + ", $" + item.Price));
+                        l++;
+                    }
+                    var choice4 = GetInputInt("Which product would you like to buy?");
+                    Product chosenProduct2 = productList[choice4];
+                    if (chosenProduct2.ProductName == "Soup")
+                    {
+                        int moreSoup = GetInputInt($"How many cans of {chosenProduct2.ProductName} would you like to buy?");
+                        newOrder.OrderQuantity1 = moreSoup + newOrder.OrderQuantity1;
+                    }
+                    else if (chosenProduct2.ProductName == "Spoons")
+                    {
+                        int moreSpoons = GetInputInt($"How many {chosenProduct2.ProductName} would you like to buy?");
+                        newOrder.OrderQuantity2 = moreSpoons + newOrder.OrderQuantity2;
+                    }
+                    else
+                    {
+                        int moreBowls = GetInputInt($"How many {chosenProduct2.ProductName} would you like to buy?");
+                        newOrder.OrderQuantity3 = moreBowls + newOrder.OrderQuantity3;
+                    }
                 }
                 else
                 {
                     shopping = false;
                 }
             }
-            newOrder.OrderTotal = newOrder.OrderQuantity*productList[0].Price;
+            AnyButton();
+            newOrder.OrderTotal = newOrder.OrderQuantity1 * productList[0].Price + newOrder.OrderQuantity2 * productList[1].Price + newOrder.OrderQuantity3 * productList[2].Price;
             var k = 0;
             List<Location> locationList = _locationBL.GetLocations();
             foreach (var item in locationList)
@@ -278,7 +313,7 @@ namespace StoreUI
             newOrder.OrderAddress = chosenAddress;
             Console.WriteLine(newOrder.ToString());
             return newOrder;
-        
+
         }
         public void SearchLocations()
         {
@@ -325,7 +360,7 @@ namespace StoreUI
         {
             Console.WriteLine("Location Inventory");
             inventory = false;
-             foreach (var item in _locationBL.GetLocations())
+            foreach (var item in _locationBL.GetLocations())
             {
                 if (item.LocationName == x)
                 {
@@ -342,35 +377,35 @@ namespace StoreUI
             Console.WriteLine("Press any key to continue");
             Console.ReadLine();
         }
-          public void ExitRemarks()
+        public void ExitRemarks()
         {
             Console.WriteLine("No Soup for You!");
         }
-        public void Test(){
-         
+        public void Test()
+        {
         }
-         public static void GetInput(String str)
-       {
+        public static void GetInput(String str)
+        {
             str = String.Format(" - {0}: ", str);
             Console.Write(str);
-       }
+        }
         public static int GetInputInt(string message)
-       {
+        {
             int input = -10;
             while (input == -10)
             {
-               try 
-               {
+                try
+                {
                     GetInput(message);
                     input = Convert.ToInt32(Console.ReadLine());
-               }
-               catch(Exception e) //Error
-               {
+                }
+                catch (Exception e) //Error
+                {
                     input = -10;
                     Console.WriteLine(e.Message);
-               }
+                }
             }
             return input;
-       }
+        }
     }
 }

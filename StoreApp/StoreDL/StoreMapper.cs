@@ -39,11 +39,15 @@ namespace StoreDL
         {
             return new Model.Order
             {
-            //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
-            OrderCustomerId = (int)order.OrderCustomerId,
-            OrderId = order.OrderId,
-            OrderLocation = order.OrderLocation,
-            OrderAddress = order.OrderAddress
+                //OrderCustomerId = ParseCustomer(order.OrderCustomerId),
+                OrderCustomerId = (int)order.OrderCustomerId,
+                OrderId = order.OrderId,
+                OrderLocation = order.OrderLocation,
+                OrderAddress = order.OrderAddress,
+                OrderQuantity1 = (int)order.OrderQuantity1,
+                OrderQuantity2 = (int)order.OrderQuantity2,
+                OrderQuantity3 = (int)order.OrderQuantity3,
+                 OrderTotal = (decimal)order.OrderTotal
             };
         }
 
@@ -57,7 +61,9 @@ namespace StoreDL
                     OrderCustomerId = (int)order.OrderCustomerId,
                     OrderLocation = order.OrderLocation,
                     OrderAddress = order.OrderAddress,
-                    OrderQuantity = (int)order.OrderQuantity,
+                    OrderQuantity1 = (int)order.OrderQuantity1,
+                    OrderQuantity2 = (int)order.OrderQuantity2,
+                    OrderQuantity3 = (int)order.OrderQuantity3,
                     OrderTotal = (decimal)order.OrderTotal
                 };
             }
@@ -69,12 +75,14 @@ namespace StoreDL
                 OrderId = (int)order.OrderId,
                 OrderLocation = order.OrderLocation,
                 OrderAddress = order.OrderAddress,
-                OrderQuantity = (int)order.OrderQuantity,
+                OrderQuantity1 = (int)order.OrderQuantity1,
+                OrderQuantity2 = (int)order.OrderQuantity2,
+                OrderQuantity3 = (int)order.OrderQuantity3,
                 OrderTotal = (decimal)order.OrderTotal
             };
 
         }
-         public Model.Location ParseLocation(Entity.Location location)
+        public Model.Location ParseLocation(Entity.Location location)
         {
             return new Model.Location
             {
@@ -86,7 +94,7 @@ namespace StoreDL
 
         public Entity.Location ParseLocation(Model.Location location)
         {
-           
+
             //for updating and deletion purposes
             return new Entity.Location
             {
@@ -96,7 +104,7 @@ namespace StoreDL
             };
 
         }
-         public Model.Product ParseProduct(Entity.Product product)
+        public Model.Product ParseProduct(Entity.Product product)
         {
             return new Model.Product
             {

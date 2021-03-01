@@ -12,7 +12,9 @@ namespace StoreModels
         private string orderAddress;
         private string orderLocation;
 
-        private int orderQuantity;
+        private int orderQuantity1;
+        private int orderQuantity2;
+        private int orderQuantity3;
 
         private decimal orderTotal;
         //public double Total { get; set; }
@@ -60,13 +62,18 @@ namespace StoreModels
 
             }
         }
-        public int OrderQuantity 
-        {get {return orderQuantity;}
-        set {orderQuantity = value;}}
+        public int OrderQuantity1 
+        {get {return orderQuantity1;}
+        set {orderQuantity1 = value;}}
+         public int OrderQuantity2 
+        {get {return orderQuantity2;}
+        set {orderQuantity2 = value;}}
+         public int OrderQuantity3 
+        {get {return orderQuantity3;}
+        set {orderQuantity3 = value;}}
         public decimal OrderTotal 
          {get {return orderTotal;}
         set {orderTotal = value;}}
-
-        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId}, {this.OrderQuantity} Cans of Soup for {this.OrderTotal}, Store and Address: {this.OrderLocation}";
+        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId}, {this.OrderQuantity1} Cans of Soup, {this.OrderQuantity2} Spoons, and {this.OrderQuantity3} Bowls for ${this.OrderTotal}, Store and Address: {this.OrderLocation}";
     }
 }

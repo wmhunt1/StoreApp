@@ -22,9 +22,10 @@ create table orders
     foreign key (orderCustomerId) references customers(customerId),
     orderAddress varchar(100) not null,
     orderLocation varchar(100) not null,
-    orderQuantity int not null,
+    orderQuantity1 int not null,
+    orderQuantity2 int not null,
+    orderQuantity3 int not null,
     orderTotal decimal not null
-
 );
 
 create table locations
@@ -41,5 +42,7 @@ create table products
 
 insert into products (productName, price) VALUES 
 ('Soup', $3.50)
+insert into products (productName, price) VALUES 
+('Spoons', $0.99), ('Bowls', $1.99) 
 insert into locations (streetAddress, locationName, locationInventory) VALUES
 ('1 Road Street', 'Main Location', 100), ('2 Road Steet', 'Branch Location', 100);
