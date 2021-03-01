@@ -198,10 +198,13 @@ namespace StoreUI
             else
             {
                 AnyButton();
+                Console.WriteLine(location2BUpdated.GetInventory());
                 _locationBL.UpdateLocation(location2BUpdated, GetLocationDetails(location2BUpdated, 100, 100, 100));
+                AnyButton();
                 Console.WriteLine("Inventory Replenished");
+                Console.WriteLine(location2BUpdated.GetInventory());
+                AnyButton();
             }
-            AnyButton();
         }
         private Location GetLocationDetails(Location x, int a, int b, int c)
         {
@@ -316,6 +319,18 @@ namespace StoreUI
             int newInv1 = chosenLocation.LocationInventory1 - newOrder.OrderQuantity1;
             int newInv2 = chosenLocation.LocationInventory2 - newOrder.OrderQuantity2;
             int newInv3 = chosenLocation.LocationInventory3 - newOrder.OrderQuantity3;
+            if (newInv1 < 0)
+            {
+                Console.WriteLine("Will need to order more Soup to fill this order");
+            }
+            if (newInv2 < 0)
+            {
+                Console.WriteLine("Will need to order more Spoons to fill this order");
+            }
+            if (newInv3 < 0)
+            {
+                Console.WriteLine("Will need to order more Bowls to fill this order");
+            }
             _locationBL.UpdateLocation(chosenLocation, GetLocationDetails(chosenLocation, newInv1, newInv2, newInv3));
             return newOrder;
 
