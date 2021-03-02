@@ -34,26 +34,23 @@ namespace StoreUI
             do
             {
                 //menu options part
-                Console.WriteLine("=====================[Just Soup]=====================");
-                Console.WriteLine("Welcome to Just Soup! Can we get you any soup today?");
-                Console.WriteLine("[1] Add a Customer");
-                Console.WriteLine("[2] View Customers");
-                Console.WriteLine("[3] Search Customers");
-                Console.WriteLine("[4] Place Order");
-                Console.WriteLine("[5] View Orders");
-                Console.WriteLine("[6] View Inventory By Location");
-                Console.WriteLine("[7] Replenish Inventory");
-                Console.WriteLine("[8] Order History by Location");
-                //Console.WriteLine("[9] Test");
-                Console.WriteLine("[0] Exit Store.");
+                Console.WriteLine("|=====================[Just Soup]=====================|");
+                Console.WriteLine("|----------|[1] Add a Customer             |----------|");
+                Console.WriteLine("|----------|[2] View Customers             |----------|");
+                Console.WriteLine("|----------|[3] Search Customers           |----------|");
+                Console.WriteLine("|----------|[4] Place Order                |----------|");
+                Console.WriteLine("|----------|[5] View Orders                |----------|");
+                Console.WriteLine("|----------|[6] View Inventory By Location |----------|");
+                Console.WriteLine("|----------|[7] Replenish Inventory        |----------|");
+                Console.WriteLine("|----------|[8] Order History by Location  |----------|");
+                Console.WriteLine("|----------|[0] Exit Store                 |----------|");
 
                 //get user input
-                Console.WriteLine("Enter a number: ");
-                string userInput = Console.ReadLine();
+                int userInput = GetInputInt("Welcome to Just Soup! Can we get you any soup today?");
 
                 switch (userInput)
                 {
-                    case "1":
+                    case 1:
                         try
                         {
                             CreateCustomer();
@@ -64,40 +61,35 @@ namespace StoreUI
                             continue;
                         }
                         break;
-                    case "2":
+                    case 2:
                         GetCustomers();
                         break;
-                    case "3":
+                    case 3:
                         SearchCustomers();
                         break;
-                    case "4":
+                    case 4:
                         CreateOrder();
                         break;
-                    case "5":
+                    case 5:
                         GetOrders();
                         break;
-                    case "6":
-                        //inventory by location
+                    case 6:
                         inventory = true;
                         SearchLocations();
                         break;
-                    case "7":
+                    case 7:
                         ReplenishInventory();
                         break;
-                    case "8":
+                    case 8:
                         order = true;
-                        //location order history
                         SearchLocations();
                         break;
-                    // case "9":
-                    //     Test();
-                    //     break;
-                    case "0":
+                    case 0:
                         stay = false;
                         ExitRemarks();
                         break;
                     default:
-                        Console.WriteLine("Invalid input! Not part of menu options! >:[");
+                        Console.WriteLine("Invalid input");
                         break;
                 }
             } while (stay);
@@ -148,19 +140,16 @@ namespace StoreUI
                 }
                 else
                 {
-                    //Console.WriteLine("Customer has no order history");
                 }
             }
         }
         public void CreateOrder()
         {
-            //need a thing for if no customers
             Console.WriteLine("Placing Order");
             _orderBL.AddOrder(GetOrderDetails());
             Console.WriteLine("Order Succesfully placed at...");
             logger.Error("");
             AnyButton();
-            //return newOrder;
         }
         public void GetOrders()
         {
@@ -435,7 +424,6 @@ namespace StoreUI
                 }
                 else
                 {
-                    //Console.WriteLine("Customer has no order history");
                 }
             }
         }
@@ -453,7 +441,7 @@ namespace StoreUI
         }
         public static void GetInput(String str)
         {
-            str = String.Format(" - {0}: ", str);
+            str = String.Format("{0}: ", str);
             Console.Write(str);
         }
         public static int GetInputInt(string message)
@@ -466,7 +454,7 @@ namespace StoreUI
                     GetInput(message);
                     input = Convert.ToInt32(Console.ReadLine());
                 }
-                catch (Exception e) //Error
+                catch (Exception e)
                 {
                     input = -10;
                     Console.WriteLine(e.Message);
@@ -478,7 +466,6 @@ namespace StoreUI
             }
             else
             {
-                //sets input to 0
                 Console.WriteLine("Input was a negative number, changed to 0");
                 input = 0;
                 return input;
