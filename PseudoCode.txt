@@ -1,8 +1,0 @@
-Menu
-Place Order
-    Customer
-    Select product and quantity
-    Select location
-View Orders
-    Prints out all orders
-Quit

@@ -239,8 +239,19 @@ namespace StoreUI
                 Console.WriteLine(i + ": " + item.ToString());
                 i++;
             }
+            int chosenCustomer = 0;
             var choice = GetInputInt("Select Customer from List");
-            int chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
+            try
+            {
+                chosenCustomer = Convert.ToInt32(customerList[choice].CustomerId);
+            }
+            catch (ArgumentOutOfRangeException outOfRange)
+            {
+
+                Console.WriteLine("Error: {0}", outOfRange.Message);
+                chosenCustomer = Convert.ToInt32(customerList[0].CustomerId);
+                Console.WriteLine("Customer not found, Default customer selected");
+            }
             newOrder.OrderCustomerId = chosenCustomer;
             Console.WriteLine("Add Items to Cart");
             AnyButton();
@@ -255,8 +266,20 @@ namespace StoreUI
                     Console.WriteLine(j + ": " + item.ProductName + ", $" + item.Price);
                     j++;
                 }
+                Product chosenProduct;
                 var choice3 = GetInputInt("Which product would you like to buy?");
-                Product chosenProduct = productList[choice3];
+                try
+                {
+                    int checkProduct = Convert.ToInt32(customerList[choice3].CustomerId);
+                    chosenProduct = productList[choice3];
+                }
+                catch (ArgumentOutOfRangeException outOfRange)
+                {
+
+                    Console.WriteLine("Error: {0}", outOfRange.Message);
+                    chosenProduct = productList[0];
+                    Console.WriteLine("Product not found, soup selected");
+                }
                 if (chosenProduct.ProductName == "Soup")
                 {
                     newOrder.OrderQuantity1 = GetInputInt($"How many {chosenProduct.ProductName} would you like to buy?");
@@ -281,7 +304,19 @@ namespace StoreUI
                         l++;
                     }
                     var choice4 = GetInputInt("Which product would you like to buy?");
-                    Product chosenProduct2 = productList[choice4];
+                    Product chosenProduct2;
+                    try
+                    {
+                        int checkProduct = Convert.ToInt32(customerList[choice4].CustomerId);
+                        chosenProduct2 = productList[choice4];
+                    }
+                    catch (ArgumentOutOfRangeException outOfRange)
+                    {
+
+                        Console.WriteLine("Error: {0}", outOfRange.Message);
+                        chosenProduct2 = productList[0];
+                        Console.WriteLine("Product not found, soup selected");
+                    }
                     if (chosenProduct2.ProductName == "Soup")
                     {
                         int moreSoup = GetInputInt($"How many cans of {chosenProduct2.ProductName} would you like to buy?");
@@ -313,7 +348,19 @@ namespace StoreUI
                 k++;
             }
             var choice2 = GetInputInt("Select Store from List");
-            Location chosenLocation = locationList[choice2];
+            Location chosenLocation;
+            try
+            {
+                int checkLocation = Convert.ToInt32(locationList[choice2].LocationId);
+                chosenLocation = locationList[choice2];
+            }
+            catch (ArgumentOutOfRangeException outOfRange)
+            {
+
+                Console.WriteLine("Error: {0}", outOfRange.Message);
+                chosenLocation = locationList[0];
+                Console.WriteLine("Location not found, Main Location selected");
+            }
             newOrder.OrderLocationId = Convert.ToInt32(chosenLocation.LocationId);
             Console.WriteLine(newOrder.ToString());
             int newInv1 = chosenLocation.LocationInventory1 - newOrder.OrderQuantity1;
@@ -425,7 +472,17 @@ namespace StoreUI
                     Console.WriteLine(e.Message);
                 }
             }
-            return input;
+            if (input >= 0)
+            {
+                return input;
+            }
+            else
+            {
+                //sets input to 0
+                Console.WriteLine("Input was a negative number, changed to 0");
+                input = 0;
+                return input;
+            }
         }
     }
 }

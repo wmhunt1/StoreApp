@@ -5,7 +5,4 @@ Borrowed some boiler plate code from TourofHeroes
 Store App
 
 Additional requirements:
-Exception Handling
-Input validation
-DB structure should be 3NF
 Code should have xml documentation
