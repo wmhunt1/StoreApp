@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreDL", "StoreDL\StoreDL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreTests", "StoreTests\StoreTests.csproj", "{27A85E89-FEB9-469F-A335-0850B5489159}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreMVC", "StoreMVC\StoreMVC.csproj", "{929D4692-63DC-4231-A87F-5E9329375104}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{27A85E89-FEB9-469F-A335-0850B5489159}.Release|x64.Build.0 = Release|Any CPU
 		{27A85E89-FEB9-469F-A335-0850B5489159}.Release|x86.ActiveCfg = Release|Any CPU
 		{27A85E89-FEB9-469F-A335-0850B5489159}.Release|x86.Build.0 = Release|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Debug|x64.Build.0 = Debug|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Debug|x86.Build.0 = Debug|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Release|x64.ActiveCfg = Release|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Release|x64.Build.0 = Release|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Release|x86.ActiveCfg = Release|Any CPU
+		{929D4692-63DC-4231-A87F-5E9329375104}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
