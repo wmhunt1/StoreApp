@@ -8,7 +8,7 @@ namespace StoreModels
     {
         // public Customer orderCustomerId { get; set; }
         private int orderCustomerId;
-        private int orderId;
+        private int id;
         private int orderLocationId;
 
         private int orderQuantity1;
@@ -16,10 +16,10 @@ namespace StoreModels
         private int orderQuantity3;
 
         private decimal orderTotal;
-        public int? OrderId { get; set; }
+        public int? Id { get; set; }
         public int? OrderCustomerId { get; set; }
 
-        public int? OrderLocationId { get; set; }
+        public int OrderLocationId { get; set; }
         // {
         //     get { return orderCustomerId; }
         //     set { orderCustomerId = value; }

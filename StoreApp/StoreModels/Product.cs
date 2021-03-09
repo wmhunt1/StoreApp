@@ -4,9 +4,10 @@ namespace StoreModels
     //This class should contain all necessary fields to define a product.
     public class Product
     {
+        //private int id { get; set; }
         private string productName;
-
         private decimal price;
+        private int id;
         public string ProductName
         {
             get { return productName; }
@@ -20,6 +21,7 @@ namespace StoreModels
             }
         }
         public decimal Price { get; set; }
+        public int Id;
         //todo: add more properties to define a product (maybe a category?)
         public override string ToString() => $"Product Details: Product Name {this.ProductName}, Price: {this.Price}";
     }
