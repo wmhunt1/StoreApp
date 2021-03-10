@@ -29,8 +29,9 @@ namespace StoreMVC
         {
             services.AddControllersWithViews();
             services.AddDbContext<StoreDBContext>(options => options.UseNpgsql(Configuration.GetConnectionString("StoreDB")));
-            //services.AddScoped<IHeroRepository, HeroRepoDB>();
-            //services.AddScoped<IHeroBL, HeroBL>();
+            services.AddScoped<ICustomerRepository, CustomerRepoDB>();
+            services.AddScoped<ICustomerBL, CustomerBL>();
+            services.AddScoped<IMapper, Mapper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

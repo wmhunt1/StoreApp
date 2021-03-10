@@ -26,7 +26,6 @@ namespace StoreDL
             modelBuilder.Entity<Customer>()
                 .Property(customer => customer.Id)
                 .ValueGeneratedOnAdd();
-            
         }
     }
     

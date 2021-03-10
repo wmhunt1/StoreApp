@@ -28,5 +28,14 @@ namespace StoreBL
             return _repo.GetCustomers();
         }
 
+        public Customer DeleteCustomer(Customer customer2BDeleted)
+        {
+            return _repo.DeleteCustomer(customer2BDeleted);
+        }
+        public Customer UpdateCustomer(Customer customer2BUpdated)
+        {
+            return _repo.UpdateCustomer(customer2BUpdated);
+        }
+
     }
 }
