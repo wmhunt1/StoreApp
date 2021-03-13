@@ -1,5 +1,5 @@
 ## Functionality:
-* Add a new customer
+* Add a new customer : Check
 * Search customers by name
 * Display details of an order
 * Place orders to store locations for customers
@@ -11,7 +11,7 @@
 * The manager should be able to replenish inventory
 
 ## Models:
-* Customer
+* Customer : Check
 * Location
 * Orders
 * Product
@@ -27,11 +27,11 @@
 * Data should be persisted, (no data should be hard coded)
   * You should use PostgreSQL DB
   * Use code first approach to establish a connection to your DB
-* WebApp should be deployed using Azure App Services
+* WebApp should be deployed using Azure App Services : Check
 * A CI/CD pipeline should be established use Azure Pipelines
-* Use ASP.NET MVC for the UI
-* DB structure should be 3NF
-  * Should have an ER Diagram
+* Use ASP.NET MVC for the UI : Check
+* DB structure should be 3NF : Check
+  * Should have an ER Diagram : Check
 * Code should have xml documentation
 
 Tech Stack:

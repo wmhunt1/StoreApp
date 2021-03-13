@@ -17,14 +17,16 @@ namespace StoreDL
         {
         }
         public DbSet<Customer> Customers { get; set; }
-        // public DbSet<Item> Items { get; set; }
-        // public DbSet<Location> Locations { get; set; }
+        public DbSet<Location> Locations { get; set; }
         // public DbSet<Order> Orders { get; set; }
         // public DbSet<Product> Products { get; set; }
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
                 .Property(customer => customer.Id)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Location>()
+                .Property(location => location.Id)
                 .ValueGeneratedOnAdd();
         }
     }

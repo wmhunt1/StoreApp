@@ -1,12 +1,12 @@
-﻿@model StoreMVC.Models.CustomerCRVM
+@model StoreMVC.Models.LocationCRVM
 
 @{
-    ViewData["Title"] = "CreateCustomer";
+    ViewData["Title"] = "CreateLocation";
 }
 
-<h1>CreateCustomer</h1>
+<h1>CreateLocation</h1>
 
-<h4>Customer</h4>
+<h4>Location</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -19,24 +19,24 @@
             <div class="form-group">
                 @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
                  *@
-                <label asp-for="CustomerName" class="control-label"></label>
+                <label asp-for="LocationName" class="control-label"></label>
                 @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
                     user input to a specific property in the object
                  *@
-                <input asp-for="CustomerName" class="form-control" />
+                <input asp-for="LocationName" class="form-control" />
                 @* This tag helper, ties the validation put in place for the HeroName property in the model *@
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
+                <span asp-validation-for="LocationName" class="text-danger"></span>
             </div>
               <div class="form-group">
                 @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
                  *@
-                <label asp-for="CustomerAddress" class="control-label"></label>
+                <label asp-for="LocationAddress" class="control-label"></label>
                 @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
                     user input to a specific property in the object
                  *@
-                <input asp-for="CustomerAddress" class="form-control" />
+                <input asp-for="LocationAddress" class="form-control" />
                 @* This tag helper, ties the validation put in place for the HeroName property in the model *@
-                <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+                <span asp-validation-for="LocationAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

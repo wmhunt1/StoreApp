@@ -1,0 +1,45 @@
+﻿@model IEnumerable<StoreMVC.Models.LocationIndexVM>
+
+@{
+    ViewData["Title"] = "Create Location";
+}
+
+<h1>Location Database</h1>
+
+<p>
+    @* asp-action is an example of a tag helper, looks like an attribute of your html element *@
+    <a asp-action="Create">Add a Location</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationName)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.LocationAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LocationName)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.LocationAddress)
+                </td>
+                <td>
+                    @* Helpers are also used to tie your views to particular actions in controllers *@
+                    @* This is an html helper *@
+                    @Html.ActionLink("Edit", "Edit", new { name = item.LocationName }) |
+                    @Html.ActionLink("Details", "Details", new { name=item.LocationName }) |
+                    @* @Html.ActionLink("Delete", "Delete", new { name=item.LocationName}) *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

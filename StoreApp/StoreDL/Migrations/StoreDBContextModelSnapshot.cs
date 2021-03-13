@@ -35,6 +35,24 @@ namespace StoreDL.Migrations
 
                     b.ToTable("Customers");
                 });
+
+            modelBuilder.Entity("StoreModels.Location", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("LocationAddress")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LocationName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
+                });
 #pragma warning restore 612, 618
         }
     }

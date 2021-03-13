@@ -8,7 +8,7 @@
 
 <p>
     @* asp-action is an example of a tag helper, looks like an attribute of your html element *@
-    <a asp-action="Create">Add a customer to the stable</a>
+    <a asp-action="Create">Add a customer</a>
 </p>
 <table class="table">
     <thead>
@@ -37,7 +37,7 @@
                     @* This is an html helper *@
                     @Html.ActionLink("Edit", "Edit", new { name = item.CustomerName }) |
                     @Html.ActionLink("Details", "Details", new { name=item.CustomerName }) |
-                    @Html.ActionLink("Delete", "Delete", new { name=item.CustomerName})
+                    @* @Html.ActionLink("Delete", "Delete", new { name=item.CustomerName}) *@
                 </td>
             </tr>
         }

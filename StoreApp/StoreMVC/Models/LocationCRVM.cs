@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using StoreModels;
@@ -8,18 +8,18 @@ namespace StoreMVC.Models
     /// <summary>
     /// Hero View Model for creating and reading heroes
     /// </summary>
-    public class CustomerCRVM
+    public class LocationCRVM
     {
-        [DisplayName("Customer Id")]
+        [DisplayName("Location Id")]
         [Required]
         public int Id { get; set; }
-        [DisplayName("Customer Name")]
+        [DisplayName("Location Name")]
         [Required]
-        public string CustomerName { get; set; }
+        public string LocationName { get; set; }
 
-        [DisplayName("Customer Address")]
+        [DisplayName("Location Address")]
         [Required]
-        public string CustomerAddress { get; set; }
+        public string LocationAddress { get; set; }
       
     }
 }

@@ -46,5 +46,47 @@ namespace StoreMVC.Models
                 CustomerAddress = customer.CustomerAddress
             };
         }
+          public LocationIndexVM cast2LocationIndexVM(Location location2BCasted)
+        {
+            return new LocationIndexVM
+            {
+                LocationName = location2BCasted.LocationName,
+                LocationAddress = location2BCasted.LocationAddress
+            };
+        }
+        public Location cast2Location(LocationCRVM location2BCasted)
+        {
+            return new Location
+            {
+                LocationName = location2BCasted.LocationName,
+                LocationAddress = location2BCasted.LocationAddress
+            };
+        }
+        public LocationCRVM cast2LocationCRVM(Location location)
+        {
+            return new LocationCRVM
+            {
+                LocationName = location.LocationName,
+                LocationAddress = location.LocationAddress
+            };
+        }
+        public Location cast2Location(LocationEditVM location2BCasted)
+        {
+            return new Location
+            {
+                Id = location2BCasted.Id,
+                LocationName = location2BCasted.LocationName,
+                LocationAddress = location2BCasted.LocationAddress
+            };
+        }
+        public LocationEditVM cast2LocationEditVM(Location location)
+        {
+            return new LocationEditVM
+            {
+                Id = location.Id,
+                LocationName = location.LocationName,
+                LocationAddress = location.LocationAddress
+            };
+        }
     }
 }

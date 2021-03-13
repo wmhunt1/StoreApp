@@ -27,14 +27,13 @@ namespace StoreBL
         {
             return _repo.GetLocationByName(name);
         }
-        public void UpdateLocation(Location location2BUpdated, Location updatedDetails)
+        public Location DeleteLocation(Location location2BDeleted)
         {
-            location2BUpdated.LocationName = updatedDetails.LocationName;
-            location2BUpdated.StreetAddress = updatedDetails.StreetAddress;
-            location2BUpdated.LocationInventory1 = updatedDetails.LocationInventory1;
-            location2BUpdated.LocationInventory2 = updatedDetails.LocationInventory2;
-            location2BUpdated.LocationInventory3 = updatedDetails.LocationInventory3;
-            _repo.UpdateLocation(location2BUpdated);
+            return _repo.DeleteLocation(location2BDeleted);
+        }
+        public Location UpdateLocation(Location location2BUpdated)
+        {
+             return _repo.UpdateLocation(location2BUpdated);
         }
     }
 }

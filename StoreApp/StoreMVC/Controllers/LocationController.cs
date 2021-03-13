@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using StoreBL;
 using StoreMVC.Models;
 
 namespace StoreMVC.Controllers
 {
-    public class CustomerController : Controller
+    public class LocationController : Controller
     {
-        private ICustomerBL _customerBL;
+        private ILocationBL _locationBL;
         private IMapper _mapper;
 
-        public CustomerController(ICustomerBL customerBL, IMapper mapper)
+        public LocationController(ILocationBL locationBL, IMapper mapper)
         {
-            _customerBL = customerBL;
+            _locationBL = locationBL;
             _mapper = mapper;
         }
 
@@ -29,52 +29,52 @@ namespace StoreMVC.Controllers
             // Dynamic - pass a model, don't tie to a view, let the view figure it out,
             //(do some further research into this)
             //Let's create a strongly typed view:
-            return View(_customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
+            return View(_locationBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList());
         }
 
         // GET: HeroController/Details?name={heroName}
         public ActionResult Details(string name)
         {
-            return View(_mapper.cast2CustomerCRVM(_customerBL.GetCustomerByName(name)));
+            return View(_mapper.cast2LocationCRVM(_locationBL.GetLocationByName(name)));
         }
 
         // GET: HeroController/Create
         public ActionResult Create()
         {
-            return View("CreateCustomer");
+            return View("CreateLocation");
         }
 
         // POST: HeroController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CustomerCRVM newCustomer)
+        public ActionResult Create(LocationCRVM newLocation)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _customerBL.AddCustomer(_mapper.cast2Customer(newCustomer));
+                    //_locationBL.AddLocation(_mapper.cast2Location(newLocation));
                     return RedirectToAction(nameof(Index));
                 }
                 catch
                 {
-                    return View("CreateCustomer");
+                    return View("CreateLocation");
                 }
             }
-            return View("CreateCustomer");
+            return View("CreateLocation");
         }
 
         // GET: HeroController/Edit/5
         public ActionResult Edit(string name)
         {
-            return View(_mapper.cast2CustomerEditVM(_customerBL.GetCustomerByName(name)));
+            return View(_mapper.cast2LocationEditVM(_locationBL.GetLocationByName(name)));
         }
 
         // POST: HeroController/Edit/
         //Model Binding: bind an action/view to a model, and apply the validation logic stated in model
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CustomerEditVM customer2BUpdated)
+        public ActionResult Edit(LocationEditVM location2BUpdated)
         {
             //Model state is valid literally means model data is valid
             //you're just checking if the data that you're receiving client side complies with the 
@@ -84,7 +84,7 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
-                    _customerBL.UpdateCustomer(_mapper.cast2Customer(customer2BUpdated));
+                    _locationBL.UpdateLocation(_mapper.cast2Location(location2BUpdated));
                     return RedirectToAction(nameof(Index));
                 }
                 catch
@@ -98,7 +98,7 @@ namespace StoreMVC.Controllers
         // GET: HeroController/Delete/{hero name}
         public ActionResult Delete(string name)
         {
-            _customerBL.DeleteCustomer(_customerBL.GetCustomerByName(name));
+            _locationBL.DeleteLocation(_locationBL.GetLocationByName(name));
             return RedirectToAction(nameof(Index));
         }
     }
