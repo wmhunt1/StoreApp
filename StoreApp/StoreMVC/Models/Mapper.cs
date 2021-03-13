@@ -4,6 +4,7 @@ namespace StoreMVC.Models
 {
     public class Mapper : IMapper
     {
+        //Customer
         public CustomerIndexVM cast2CustomerIndexVM(Customer customer2BCasted)
         {
             return new CustomerIndexVM
@@ -24,8 +25,8 @@ namespace StoreMVC.Models
         {
             return new CustomerCRVM
             {
-               CustomerName = customer.CustomerName,
-            CustomerAddress = customer.CustomerAddress
+                CustomerName = customer.CustomerName,
+                CustomerAddress = customer.CustomerAddress
             };
         }
         public Customer cast2Customer(CustomerEditVM customer2BCasted)
@@ -46,7 +47,8 @@ namespace StoreMVC.Models
                 CustomerAddress = customer.CustomerAddress
             };
         }
-          public LocationIndexVM cast2LocationIndexVM(Location location2BCasted)
+        //Location
+        public LocationIndexVM cast2LocationIndexVM(Location location2BCasted)
         {
             return new LocationIndexVM
             {
@@ -88,5 +90,54 @@ namespace StoreMVC.Models
                 LocationAddress = location.LocationAddress
             };
         }
+        //Product
+        public ProductIndexVM cast2ProductIndexVM(Product product2BCasted)
+        {
+            return new ProductIndexVM
+            {
+                ProductName = product2BCasted.ProductName,
+                ProductDesc = product2BCasted.ProductDesc,
+                Price = product2BCasted.Price
+            };
+        }
+        public Product cast2Product(ProductCRVM product2BCasted)
+        {
+            return new Product
+            {
+                ProductName = product2BCasted.ProductName,
+                ProductDesc = product2BCasted.ProductDesc,
+                Price = product2BCasted.Price
+            };
+        }
+        public ProductCRVM cast2ProductCRVM(Product product)
+        {
+            return new ProductCRVM
+            {
+                ProductName = product.ProductName,
+                ProductDesc = product.ProductDesc,
+                Price = product.Price
+            };
+        }
+        public Product cast2Product(ProductEditVM product2BCasted)
+        {
+            return new Product
+            {
+                Id = product2BCasted.Id,
+                ProductName = product2BCasted.ProductName,
+                ProductDesc = product2BCasted.ProductDesc,
+                Price = product2BCasted.Price
+            };
+        }
+        public ProductEditVM cast2ProductEditVM(Product product)
+        {
+            return new ProductEditVM
+            {
+                Id = product.Id,
+                ProductName = product.ProductName,
+                ProductDesc = product.ProductDesc,
+                Price = product.Price
+            };
+        }
+        //Order
     }
 }

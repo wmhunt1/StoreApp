@@ -10,6 +10,9 @@ namespace StoreMVC.Models
     /// </summary>
     public class LocationEditVM
     {
+        [DisplayName("Location ID")]
+        [Required]
+        public int Id { get; set; }
         [Required]
         [DisplayName("Location Name")]
         public string LocationName { get; set; }
@@ -18,7 +21,6 @@ namespace StoreMVC.Models
         [DisplayName("Location Address")]
         public string LocationAddress { get; set; }
 
-        public int Id { get; set; }
  
     }
 }

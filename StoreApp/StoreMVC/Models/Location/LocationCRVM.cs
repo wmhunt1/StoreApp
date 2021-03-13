@@ -10,7 +10,7 @@ namespace StoreMVC.Models
     /// </summary>
     public class LocationCRVM
     {
-        [DisplayName("Location Id")]
+        [DisplayName("Location ID")]
         [Required]
         public int Id { get; set; }
         [DisplayName("Location Name")]

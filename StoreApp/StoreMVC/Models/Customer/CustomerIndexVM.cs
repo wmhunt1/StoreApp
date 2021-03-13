@@ -10,6 +10,8 @@ namespace StoreMVC.Models
     {
         //Data annotation
         //Can be used for display purposes, and also for validation
+         [DisplayName("Customer ID")]
+        public int Id { get; set; }
         [DisplayName("Customer Name")]
         public string CustomerName { get; set; }
 

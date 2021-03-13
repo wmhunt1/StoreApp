@@ -6,20 +6,22 @@ using StoreModels;
 namespace StoreMVC.Models
 {
     /// <summary>
-    /// Hero View Model for creating and reading heroes
+    /// Needed to store the Id of the hero I'm going to update
     /// </summary>
-    public class CustomerCRVM
+    public class CustomerEditVM
     {
-        [DisplayName("Customer Id")]
+        
         [Required]
+        [DisplayName("Customer ID")]
         public int Id { get; set; }
-        [DisplayName("Customer Name")]
+
         [Required]
+        [DisplayName("Customer Name")]
         public string CustomerName { get; set; }
 
-        [DisplayName("Customer Address")]
         [Required]
+        [DisplayName("Customer Address")]
         public string CustomerAddress { get; set; }
-      
+ 
     }
 }
