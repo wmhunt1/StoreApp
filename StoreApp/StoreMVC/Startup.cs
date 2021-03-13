@@ -33,6 +33,8 @@ namespace StoreMVC
             services.AddScoped<ICustomerBL, CustomerBL>();
             services.AddScoped<ILocationRepository, LocationRepoDB>();
             services.AddScoped<ILocationBL, LocationBL>();
+            services.AddScoped<IProductRepository, ProductRepoDB>();
+            services.AddScoped<IProductBL, ProductBL>();
             services.AddScoped<IMapper, Mapper>();
         }
 

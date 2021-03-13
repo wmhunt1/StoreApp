@@ -6,5 +6,9 @@ namespace StoreBL
     {
         List<Product> GetProducts();
         void AddProduct(Product newProduct);
+        Product GetProductByName(string name);
+        Product DeleteProduct(Product product2BDeleted);
+
+        Product UpdateProduct(Product product2BUpdated);
     }
 }

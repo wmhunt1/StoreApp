@@ -6,6 +6,8 @@ namespace StoreModels
     {
         //private int id { get; set; }
         private string productName;
+
+        private string productDesc;
         private decimal price;
         private int id;
         public string ProductName
@@ -18,6 +20,18 @@ namespace StoreModels
                     throw new ArgumentNullException("product name can't be empty or null");
                 }
                 productName = value;
+            }
+        }
+         public string ProductDesc
+        {
+            get { return productDesc; }
+            set
+            {
+                if (value == null || value.Equals(""))
+                {
+                    throw new ArgumentNullException("product name can't be empty or null");
+                }
+                productDesc = value;
             }
         }
         public decimal Price { get; set; }

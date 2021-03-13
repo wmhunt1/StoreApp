@@ -19,7 +19,7 @@ namespace StoreDL
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Location> Locations { get; set; }
         // public DbSet<Order> Orders { get; set; }
-        // public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Products { get; set; }
          protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
@@ -27,6 +27,9 @@ namespace StoreDL
                 .ValueGeneratedOnAdd();
             modelBuilder.Entity<Location>()
                 .Property(location => location.Id)
+                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Product>()
+                .Property(product => product.Id)
                 .ValueGeneratedOnAdd();
         }
     }
