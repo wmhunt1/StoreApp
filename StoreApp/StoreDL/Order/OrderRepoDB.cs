@@ -39,6 +39,13 @@ namespace StoreDL
         {
             return order2BUpdated;
         }
+
+         public Order GetOrderByName(string name)
+        {
+            return _context.Orders
+                .AsNoTracking()
+                .FirstOrDefault(order => order.OrderName == name);
+        }
     }
     
 }

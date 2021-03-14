@@ -31,5 +31,11 @@ namespace StoreBL
         {
             return _repo.UpdateOrder(order2BUpdated);
         }
+
+        public Order GetOrderByName(string name)
+        {
+            //Todo: check if the name given is not null or empty string 
+            return _repo.GetOrderByName(name);
+        }
     }
 }

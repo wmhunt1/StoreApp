@@ -9,5 +9,8 @@ namespace StoreDL
         Order DeleteOrder(Order order2BDeleted);
 
         Order UpdateOrder(Order order2BUpdated);
+
+        Order GetOrderByName(string name);
+
     }
 }

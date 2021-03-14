@@ -8,6 +8,8 @@ namespace StoreModels
     {
         // public Customer orderCustomerId { get; set; }
         private int orderCustomerId;
+
+        private string orderName;
         private int id;
         private int orderLocationId;
 
@@ -17,9 +19,25 @@ namespace StoreModels
 
         private decimal orderTotal;
         public int? Id { get; set; }
+
+        public string OrderName 
+         {
+            get { return orderName; }
+            set
+            {
+                if (value == null || value.Equals(""))
+                {
+                    throw new ArgumentNullException("location name can't be empty or null");
+                }
+                orderName = value;
+
+            }
+        }
         public int? OrderCustomerId { get; set; }
 
         public int OrderLocationId { get; set; }
+
+        public string OrderContents { get; set; }
         public decimal OrderTotal
         {
             get { return orderTotal; }
