@@ -1,8 +1,8 @@
 ## Functionality:
 * Add a new customer : Check
 * Search customers by name
-* Display details of an order
-* Place orders to store locations for customers
+* Display details of an order : Check
+* Place orders to store locations for customers : Check
 * View order history of customer
 * View order history of location
 * View location inventory
@@ -12,9 +12,9 @@
 
 ## Models:
 * Customer : Check
-* Location
-* Orders
-* Product
+* Location : Check
+* Orders : Check
+* Product : Check
 #### Note: add as much models as you would need for your design
 
 ## Additional requirements:
@@ -24,9 +24,9 @@
 * At least 20 unit tests:
   * Use Moq and Sqlite for testing
   * DB methods should be tested
-* Data should be persisted, (no data should be hard coded)
-  * You should use PostgreSQL DB
-  * Use code first approach to establish a connection to your DB
+* Data should be persisted, (no data should be hard coded) : Check
+  * You should use PostgreSQL DB : Check
+  * Use code first approach to establish a connection to your DB : Check
 * WebApp should be deployed using Azure App Services : Check
 * A CI/CD pipeline should be established use Azure Pipelines
 * Use ASP.NET MVC for the UI : Check

@@ -84,6 +84,7 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
+                    
                     _customerBL.UpdateCustomer(_mapper.cast2Customer(customer2BUpdated));
                     return RedirectToAction(nameof(Index));
                 }
