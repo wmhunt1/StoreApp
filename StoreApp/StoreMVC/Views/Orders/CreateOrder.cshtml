@@ -1,0 +1,87 @@
+@model StoreMVC.Models.OrderCRVM
+
+@{
+    ViewData["Title"] = "OrderCustomer";
+}
+
+<h1>CreateOrder</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @* Form tag helper. Doesn't really need a controller, since this view is already tied to the HeroController
+            What it does need is an action to route to. basically what asp-action="Create" means is that, you submit this
+            form to the herocontroller to the create action
+         *@
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
+                 *@
+                <label asp-for="OrderName" class="control-label"></label>
+                @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
+                    user input to a specific property in the object
+                 *@
+                <input asp-for="OrderName" class="form-control" />
+                @* This tag helper, ties the validation put in place for the HeroName property in the model *@
+                <span asp-validation-for="OrderName" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
+                 *@
+                <label asp-for="OrderCustomerId" class="control-label"></label>
+                @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
+                    user input to a specific property in the object
+                 *@
+                <input asp-for="OrderCustomerId" class="form-control" />
+                @* This tag helper, ties the validation put in place for the HeroName property in the model *@
+                <span asp-validation-for="OrderCustomerId" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
+                 *@
+                <label asp-for="OrderLocationId" class="control-label"></label>
+                @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
+                    user input to a specific property in the object
+                 *@
+                <input asp-for="OrderLocationId" class="form-control" />
+                @* This tag helper, ties the validation put in place for the HeroName property in the model *@
+                <span asp-validation-for="OrderLocationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
+                 *@
+                <label asp-for="OrderContents" class="control-label"></label>
+                @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
+                    user input to a specific property in the object
+                 *@
+                <input asp-for="OrderContents" class="form-control" />
+                @* This tag helper, ties the validation put in place for the HeroName property in the model *@
+                <span asp-validation-for="OrderContents" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @* The tag helper label is tying the display property HeroName of a HeroIndexVM object 
+                 *@
+                <label asp-for="OrderTotal" class="control-label"></label>
+                @* Using the input tag helper, the data type is tied to what kind of input type gets generated, this ties the
+                    user input to a specific property in the object
+                 *@
+                <input asp-for="OrderTotal" class="form-control" />
+                @* This tag helper, ties the validation put in place for the HeroName property in the model *@
+                <span asp-validation-for="OrderTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

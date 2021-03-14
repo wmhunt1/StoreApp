@@ -1,0 +1,63 @@
+@model IEnumerable<StoreMVC.Models.OrderIndexVM>
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<h1>Order Database</h1>
+
+<p>
+    @* asp-action is an example of a tag helper, looks like an attribute of your html element *@
+    <a asp-action="Create">Add a Order</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderName)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.OrderCustomerId)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.OrderLocationId)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.OrderContents)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.OrderTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderName)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.OrderCustomerId)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.OrderLocationId)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.OrderContents)
+                </td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.OrderTotal)
+                </td>
+                <td>
+                    @* Helpers are also used to tie your views to particular actions in controllers *@
+                    @* This is an html helper *@
+                    @Html.ActionLink("Edit", "Edit", new { name = item.OrderName }) |
+                    @Html.ActionLink("Details", "Details", new { name=item.OrderName }) |
+                    @* @Html.ActionLink("Delete", "Delete", new { name=item.OrderName}) *@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

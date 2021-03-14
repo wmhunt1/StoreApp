@@ -139,5 +139,62 @@ namespace StoreMVC.Models
             };
         }
         //Order
+           public OrderIndexVM cast2OrderIndexVM(Order order2BCasted)
+        {
+            return new OrderIndexVM
+            {
+                OrderName = order2BCasted.OrderName,
+                OrderCustomerId = order2BCasted.OrderCustomerId,
+                OrderLocationId = order2BCasted.OrderLocationId,
+                OrderContents = order2BCasted.OrderContents,
+                OrderTotal = order2BCasted.OrderTotal,
+            };
+        }
+        public Order cast2Order(OrderCRVM order2BCasted)
+        {
+            return new Order
+            {
+                OrderName = order2BCasted.OrderName,
+                OrderCustomerId = order2BCasted.OrderCustomerId,
+                OrderLocationId = order2BCasted.OrderLocationId,
+                OrderContents = order2BCasted.OrderContents,
+                OrderTotal = order2BCasted.OrderTotal,
+            };
+        }
+        public OrderCRVM cast2OrderCRVM(Order order)
+        {
+            return new OrderCRVM
+            {
+                 OrderName = order.OrderName,
+                OrderCustomerId = order.OrderCustomerId,
+                OrderLocationId = order.OrderLocationId,
+                OrderContents = order.OrderContents,
+                OrderTotal = order.OrderTotal,
+            };
+        }
+        public Order cast2Order(OrderEditVM order2BCasted)
+        {
+            return new Order
+            {
+                Id = order2BCasted.Id,
+                OrderName = order2BCasted.OrderName,
+                OrderCustomerId = order2BCasted.OrderCustomerId,
+                OrderLocationId = order2BCasted.OrderLocationId,
+                OrderContents = order2BCasted.OrderContents,
+                OrderTotal = order2BCasted.OrderTotal,
+            };
+        }
+        public OrderEditVM cast2OrderEditVM(Order order)
+        {
+            return new OrderEditVM
+            {
+                Id = order.Id,
+                OrderName = order.OrderName,
+                OrderCustomerId = order.OrderCustomerId,
+                OrderLocationId = order.OrderLocationId,
+                OrderContents = order.OrderContents,
+                OrderTotal = order.OrderTotal,
+            };
+        }
     }
 }

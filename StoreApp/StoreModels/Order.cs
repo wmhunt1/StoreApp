@@ -18,7 +18,7 @@ namespace StoreModels
         private int orderQuantity3;
 
         private decimal orderTotal;
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         public string OrderName 
          {
@@ -33,7 +33,7 @@ namespace StoreModels
 
             }
         }
-        public int? OrderCustomerId { get; set; }
+        public int OrderCustomerId { get; set; }
 
         public int OrderLocationId { get; set; }
 
