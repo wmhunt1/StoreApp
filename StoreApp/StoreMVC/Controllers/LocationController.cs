@@ -53,15 +53,15 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
-                    //_locationBL.AddLocation(_mapper.cast2Location(newLocation));
+                    _locationBL.AddLocation(_mapper.cast2Location(newLocation));
                     return RedirectToAction(nameof(Index));
                 }
                 catch
                 {
-                    return View("CreateLocation");
+                    return View();
                 }
             }
-            return View("CreateLocation");
+            return View();
         }
 
         // GET: HeroController/Edit/5
@@ -71,7 +71,7 @@ namespace StoreMVC.Controllers
         }
 
         // POST: HeroController/Edit/
-        //Model Binding: bind an action/view to a model, and apply the validation logic stated in model
+        //Model Binding: bind an action/view to a model, and apply the validation logic/structure stated in model
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(LocationEditVM location2BUpdated)

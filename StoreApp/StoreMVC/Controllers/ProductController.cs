@@ -53,7 +53,7 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
-                    //_productBL.AddProduct(_mapper.cast2Product(newProduct));
+                    _productBL.AddProduct(_mapper.cast2Product(newProduct));
                     return RedirectToAction(nameof(Index));
                 }
                 catch
@@ -84,7 +84,7 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
-                    //_productBL.UpdateProduct(_mapper.cast2Product(product2BUpdated));
+                    _productBL.UpdateProduct(_mapper.cast2Product(product2BUpdated));
                     return RedirectToAction(nameof(Index));
                 }
                 catch
