@@ -53,7 +53,7 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
-                    _locationBL.AddLocation(_mapper.cast2Location(newLocation));
+                    //_locationBL.AddLocation(_mapper.cast2Location(newLocation));
                     return RedirectToAction(nameof(Index));
                 }
                 catch

@@ -4,8 +4,10 @@ namespace StoreBL
 {
     public interface IOrderBL
     {
-        List<Order> GetOrders();
+       List<Order> GetOrders();
         void AddOrder(Order newOrder);
-        Order FilterOrdersByCustomerID(int id);
+        Order DeleteOrder(Order order2BDeleted);
+
+        Order UpdateOrder(Order order2BUpdated);
     }
 }

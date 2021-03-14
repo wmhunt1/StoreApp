@@ -6,7 +6,8 @@ namespace StoreDL
     {
         List<Order> GetOrders();
         Order AddOrder(Order newOrder);
+        Order DeleteOrder(Order order2BDeleted);
 
-        Order FilterOrdersByCustomerID(int id);
+        Order UpdateOrder(Order order2BUpdated);
     }
 }

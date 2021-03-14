@@ -20,30 +20,11 @@ namespace StoreModels
         public int? OrderCustomerId { get; set; }
 
         public int OrderLocationId { get; set; }
-        // {
-        //     get { return orderCustomerId; }
-        //     set { orderCustomerId = value; }
-        // }
-        public int OrderQuantity1
-        {
-            get { return orderQuantity1; }
-            set { orderQuantity1 = value; }
-        }
-        public int OrderQuantity2
-        {
-            get { return orderQuantity2; }
-            set { orderQuantity2 = value; }
-        }
-        public int OrderQuantity3
-        {
-            get { return orderQuantity3; }
-            set { orderQuantity3 = value; }
-        }
         public decimal OrderTotal
         {
             get { return orderTotal; }
             set { orderTotal = value; }
         }
-        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId}, {this.OrderQuantity1} Cans of Soup, {this.OrderQuantity2} Spoons, and {this.OrderQuantity3} Bowls for ${this.OrderTotal}, Store ID: {this.OrderLocationId}";
+        public override string ToString() => $"Order Details: \n\t Customer ID: {this.OrderCustomerId}, Store ID: {this.OrderLocationId}";
     }
 }

@@ -12,20 +12,24 @@ namespace StoreBL
         {
             _repo = repo;
         }
-        public void AddOrder(Order newOrder)
+       public void AddOrder(Order newOrder)
         {
             //Todo: Add BL
             _repo.AddOrder(newOrder);
         }
-
         public List<Order> GetOrders()
         {
             //TODO add BL
             return _repo.GetOrders();
         }
-        public Order FilterOrdersByCustomerID(int id)
+
+        public Order DeleteOrder(Order order2BDeleted)
         {
-            return _repo.FilterOrdersByCustomerID(id);
+            return _repo.DeleteOrder(order2BDeleted);
+        }
+        public Order UpdateOrder(Order order2BUpdated)
+        {
+            return _repo.UpdateOrder(order2BUpdated);
         }
     }
 }
