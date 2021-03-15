@@ -1,6 +1,6 @@
 ## Functionality:
 * Add a new customer : Check
-* Search customers by name
+* Search customers by name : Check
 * Display details of an order : Check
 * Place orders to store locations for customers : Check
 * View order history of customer

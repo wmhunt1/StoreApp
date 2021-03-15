@@ -10,15 +10,36 @@
     @* asp-action is an example of a tag helper, looks like an attribute of your html element *@
     <a asp-action="Create">Add a customer</a>
 </p>
+@* <p>  
+    @Html.ActionLink("Create New", "Create")  
+</p>   *@
+   
+@using (Html.BeginForm())  
+{  
+    <p>  
+        Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)  
+        <input type="submit" value="Find" />  
+    </p>  
+}  
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.CustomerName)
-            </th>
-             <th>
+                </th>
+                <th>
                 @Html.DisplayNameFor(model => model.CustomerAddress)
+                </th> *@
+            <th>
+                @Html.ActionLink("Customer Name", "Index", new { Sorting_Order = ViewBag.SortingName })
             </th>
+            @* <th>
+                Customer Name
+            </th> *@
+            <th>
+                @Html.ActionLink("Customer Address", "Index", new { Sorting_Order = ViewBag.SortingAddress })
+            </th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
@@ -29,7 +50,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.CustomerName)
                 </td>
-                 <td>
+                <td>
                     @Html.DisplayFor(modelItem => item.CustomerAddress)
                 </td>
                 <td>

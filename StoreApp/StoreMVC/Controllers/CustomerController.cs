@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using StoreBL;
 using StoreMVC.Models;
@@ -21,15 +22,42 @@ namespace StoreMVC.Controllers
         // you can also have actions, that respond to different requests
         //You just have to map the request type to the action properly
         // GET: HeroController
-        public ActionResult Index()
+        // public ActionResult Index()
+        // {
+        //     //You have different kinds of views:
+        //     //Strongly-typed - tied to a model
+        //     //Weakly-typed - not tied to a model. gets data via viewbag, viewdata, tempdata, etc.
+        //     // Dynamic - pass a model, don't tie to a view, let the view figure it out,
+        //     //(do some further research into this)
+        //     //Let's create a strongly typed view:
+        //     return View(_customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
+        // }
+        public ActionResult Index(string Sorting_Order, string Search_Data)
         {
-            //You have different kinds of views:
-            //Strongly-typed - tied to a model
-            //Weakly-typed - not tied to a model. gets data via viewbag, viewdata, tempdata, etc.
-            // Dynamic - pass a model, don't tie to a view, let the view figure it out,
-            //(do some further research into this)
-            //Let's create a strongly typed view:
-            return View(_customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
+            ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "name_desc" : "";
+            ViewBag.SortingAddress = Sorting_Order == "Address" ? "address_desc" : "Address";
+            
+            var customers = from cus in _customerBL.GetCustomers() select cus;
+            if(Search_Data != null)
+            { 
+                customers = customers.Where(cus => cus.CustomerName.ToUpper().Contains(Search_Data.ToUpper()) || cus.CustomerName.ToUpper().Contains(Search_Data.ToUpper()));  
+            }
+            switch (Sorting_Order)
+            {
+                case "name_desc":
+                    customers = customers.OrderByDescending(cus => cus.CustomerName);
+                    break;
+                case "Address":
+                    customers = customers.OrderBy(cus => cus.CustomerAddress);
+                    break;
+                case "address_desc":
+                    customers = customers.OrderByDescending(cus => cus.CustomerAddress);
+                    break;
+                default:
+                    customers = customers.OrderBy(cus => cus.CustomerAddress);
+                    break;
+            }
+            return View(customers.Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
         }
 
         // GET: HeroController/Details?name={heroName}
@@ -84,7 +112,7 @@ namespace StoreMVC.Controllers
             {
                 try
                 {
-                    
+
                     _customerBL.UpdateCustomer(_mapper.cast2Customer(customer2BUpdated));
                     return RedirectToAction(nameof(Index));
                 }
