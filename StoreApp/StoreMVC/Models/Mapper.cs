@@ -9,6 +9,7 @@ namespace StoreMVC.Models
         {
             return new CustomerIndexVM
             {
+                Id = customer2BCasted.Id,
                 CustomerName = customer2BCasted.CustomerName,
                 CustomerAddress = customer2BCasted.CustomerAddress
             };
@@ -17,6 +18,7 @@ namespace StoreMVC.Models
         {
             return new Customer
             {
+                 Id = customer2BCasted.Id,
                 CustomerName = customer2BCasted.CustomerName,
                 CustomerAddress = customer2BCasted.CustomerAddress
             };
@@ -25,6 +27,7 @@ namespace StoreMVC.Models
         {
             return new CustomerCRVM
             {
+                Id = customer.Id,
                 CustomerName = customer.CustomerName,
                 CustomerAddress = customer.CustomerAddress
             };
@@ -52,6 +55,7 @@ namespace StoreMVC.Models
         {
             return new LocationIndexVM
             {
+                Id = location2BCasted.Id,
                 LocationName = location2BCasted.LocationName,
                 LocationAddress = location2BCasted.LocationAddress
             };
@@ -60,6 +64,7 @@ namespace StoreMVC.Models
         {
             return new Location
             {
+                 Id = location2BCasted.Id,
                 LocationName = location2BCasted.LocationName,
                 LocationAddress = location2BCasted.LocationAddress
             };
@@ -68,6 +73,7 @@ namespace StoreMVC.Models
         {
             return new LocationCRVM
             {
+                 Id = location.Id,
                 LocationName = location.LocationName,
                 LocationAddress = location.LocationAddress
             };
@@ -95,6 +101,7 @@ namespace StoreMVC.Models
         {
             return new ProductIndexVM
             {
+                Id = product2BCasted.Id,
                 ProductName = product2BCasted.ProductName,
                 ProductDesc = product2BCasted.ProductDesc,
                 Price = product2BCasted.Price
@@ -104,6 +111,7 @@ namespace StoreMVC.Models
         {
             return new Product
             {
+                Id = product2BCasted.Id,
                 ProductName = product2BCasted.ProductName,
                 ProductDesc = product2BCasted.ProductDesc,
                 Price = product2BCasted.Price
@@ -113,6 +121,7 @@ namespace StoreMVC.Models
         {
             return new ProductCRVM
             {
+                  Id = product.Id,
                 ProductName = product.ProductName,
                 ProductDesc = product.ProductDesc,
                 Price = product.Price
@@ -143,6 +152,7 @@ namespace StoreMVC.Models
         {
             return new OrderIndexVM
             {
+                Id = order2BCasted.Id,
                 OrderName = order2BCasted.OrderName,
                 OrderCustomerId = order2BCasted.OrderCustomerId,
                 OrderLocationId = order2BCasted.OrderLocationId,
@@ -154,6 +164,7 @@ namespace StoreMVC.Models
         {
             return new Order
             {
+                Id = order2BCasted.Id,
                 OrderName = order2BCasted.OrderName,
                 OrderCustomerId = order2BCasted.OrderCustomerId,
                 OrderLocationId = order2BCasted.OrderLocationId,
@@ -165,7 +176,8 @@ namespace StoreMVC.Models
         {
             return new OrderCRVM
             {
-                 OrderName = order.OrderName,
+                Id = order.Id,
+                OrderName = order.OrderName,
                 OrderCustomerId = order.OrderCustomerId,
                 OrderLocationId = order.OrderLocationId,
                 OrderContents = order.OrderContents,
