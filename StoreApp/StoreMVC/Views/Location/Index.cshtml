@@ -30,6 +30,9 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.LocationName)
                 </td>
                  <td>
@@ -40,7 +43,7 @@
                     @* This is an html helper *@
                     @Html.ActionLink("Edit", "Edit", new { name = item.LocationName }) |
                     @Html.ActionLink("Details", "Details", new { name=item.LocationName }) |
-                    @* @Html.ActionLink("Delete", "Delete", new { name=item.LocationName}) *@
+                    @Html.ActionLink("Delete", "Delete", new { name=item.LocationName})
                 </td>
             </tr>
         }

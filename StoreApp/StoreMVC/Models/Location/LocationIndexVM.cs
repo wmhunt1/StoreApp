@@ -10,7 +10,7 @@ namespace StoreMVC.Models
     {
         //Data annotation
         //Can be used for display purposes, and also for validation
-         [DisplayName("Order Id")]
+         [DisplayName("Location ID")]
         public int Id { get; set; }
         [DisplayName("Location Name")]
         public string LocationName { get; set; }

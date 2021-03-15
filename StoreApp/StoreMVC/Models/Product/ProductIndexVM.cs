@@ -8,7 +8,7 @@ namespace StoreMVC.Models
     /// </summary>
     public class ProductIndexVM
     {
-        [DisplayName("Product Id")]
+        [DisplayName("Product ID")]
         public int Id { get; set; }
         [DisplayName("Product Name")]
         public string ProductName { get; set; }
