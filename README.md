@@ -3,8 +3,8 @@
 * Search customers by name : Check
 * Display details of an order : Check
 * Place orders to store locations for customers : Check
-* View order history of customer
-* View order history of location
+* View order history of customer : Check
+* View order history of location : Check
 * View location inventory
 * The customer should be able to purchase multiple products
 * Order histories should have the option to be sorted by date (latest to oldest and vice versa) or cost (least expensive to most expensive) : Check

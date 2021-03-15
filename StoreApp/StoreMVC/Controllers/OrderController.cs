@@ -32,14 +32,20 @@ namespace StoreMVC.Controllers
         //     //Let's create a strongly typed view:
         //     return View(_orderBL.GetOrders().Select(order => _mapper.cast2OrderIndexVM(order)).ToList());
         // }
-         public ActionResult Index(string Sorting_Order)
+        public ActionResult Index(string Sorting_Order, string Search_Data1, string Search_Data2)
         {
             ViewBag.SortingTotal = String.IsNullOrEmpty(Sorting_Order) ? "total_desc" : "";
-            //ViewBag.SortingAddress = Sorting_Order == "Address" ? "address_desc" : "Address";
-             ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
-            
+            ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
+
             var orders = from ord in _orderBL.GetOrders() select ord;
-          
+            if(Search_Data1 != null)
+            { 
+                orders = orders.Where(ord => ord.OrderCustomerId.ToString().Contains(Search_Data1.ToUpper()) || ord.OrderCustomerId.ToString().Contains(Search_Data1.ToUpper()));  
+            }
+            if(Search_Data2 != null)
+            { 
+                orders = orders.Where(ord => ord.OrderLocationId.ToString().Contains(Search_Data2.ToUpper()) || ord.OrderCustomerId.ToString().Contains(Search_Data2.ToUpper()));  
+            }
             switch (Sorting_Order)
             {
                 case "total_desc":
@@ -48,9 +54,6 @@ namespace StoreMVC.Controllers
                 case "id_desc":
                     orders = orders.OrderBy(cus => cus.Id);
                     break;
-                // case "address_desc":
-                //     customers = customers.OrderByDescending(cus => cus.CustomerAddress);
-                //     break;
                 default:
                     orders = orders.OrderBy(ord => ord.Id);
                     break;

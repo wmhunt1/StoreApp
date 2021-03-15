@@ -10,6 +10,20 @@
     @* asp-action is an example of a tag helper, looks like an attribute of your html element *@
     <a asp-action="Create">Add a Order</a>
 </p>
+@using (Html.BeginForm())  
+{  
+    <p>  
+        Search Customer: @Html.TextBox("Search_Data1", ViewBag.FilterValue as string)  
+        <input type="submit" value="Find" />  
+    </p>  
+}  
+@using (Html.BeginForm())  
+{  
+    <p>  
+        Search Location: @Html.TextBox("Search_Data2", ViewBag.FilterValue as string)  
+        <input type="submit" value="Find" />  
+    </p>  
+}  
 <table class="table">
     <thead>
         <tr>
