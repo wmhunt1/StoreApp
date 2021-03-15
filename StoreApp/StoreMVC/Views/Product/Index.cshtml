@@ -29,6 +29,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProductName)
                 </td>

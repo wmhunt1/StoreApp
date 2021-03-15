@@ -13,6 +13,9 @@
 <table class="table">
     <thead>
         <tr>
+            <<th>
+                @Html.ActionLink("Order ID", "Index", new { Sorting_Order = ViewBag.SortingId})
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrderName)
             </th>
@@ -25,8 +28,11 @@
              <th>
                 @Html.DisplayNameFor(model => model.OrderContents)
             </th>
-             <th>
+             @* <th>
                 @Html.DisplayNameFor(model => model.OrderTotal)
+            </th> *@
+            <th>
+                @Html.ActionLink("Order Total", "Index", new { Sorting_Order = ViewBag.SortingTotal})
             </th>
             <th></th>
         </tr>
@@ -35,6 +41,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.OrderName)
                 </td>

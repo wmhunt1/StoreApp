@@ -35,7 +35,8 @@ namespace StoreMVC.Controllers
         public ActionResult Index(string Sorting_Order, string Search_Data)
         {
             ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "name_desc" : "";
-            ViewBag.SortingAddress = Sorting_Order == "Address" ? "address_desc" : "Address";
+            //ViewBag.SortingAddress = Sorting_Order == "Address" ? "address_desc" : "Address";
+            ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
             
             var customers = from cus in _customerBL.GetCustomers() select cus;
             if(Search_Data != null)
@@ -47,14 +48,14 @@ namespace StoreMVC.Controllers
                 case "name_desc":
                     customers = customers.OrderByDescending(cus => cus.CustomerName);
                     break;
-                case "Address":
-                    customers = customers.OrderBy(cus => cus.CustomerAddress);
+                case "id_desc":
+                    customers = customers.OrderBy(cus => cus.Id);
                     break;
-                case "address_desc":
-                    customers = customers.OrderByDescending(cus => cus.CustomerAddress);
-                    break;
+                //case "address_desc":
+                    // customers = customers.OrderByDescending(cus => cus.CustomerAddress);
+                    // break;
                 default:
-                    customers = customers.OrderBy(cus => cus.CustomerAddress);
+                    customers = customers.OrderBy(cus => cus.Id);
                     break;
             }
             return View(customers.Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());

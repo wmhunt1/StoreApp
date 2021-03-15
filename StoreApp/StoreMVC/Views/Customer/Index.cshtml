@@ -30,12 +30,12 @@
                 <th>
                 @Html.DisplayNameFor(model => model.CustomerAddress)
                 </th> *@
+           <th>
+                @Html.ActionLink("Customer ID", "Index", new { Sorting_Order = ViewBag.SortingId})
+            </th>
             <th>
                 @Html.ActionLink("Customer Name", "Index", new { Sorting_Order = ViewBag.SortingName })
             </th>
-            @* <th>
-                Customer Name
-            </th> *@
             <th>
                 @Html.ActionLink("Customer Address", "Index", new { Sorting_Order = ViewBag.SortingAddress })
             </th>
@@ -48,6 +48,9 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.CustomerName)
                 </td>
                 <td>
@@ -58,7 +61,7 @@
                     @* This is an html helper *@
                     @Html.ActionLink("Edit", "Edit", new { name = item.CustomerName }) |
                     @Html.ActionLink("Details", "Details", new { name=item.CustomerName }) |
-                    @* @Html.ActionLink("Delete", "Delete", new { name=item.CustomerName}) *@
+                    @Html.ActionLink("Delete", "Delete", new { name=item.CustomerName})
                 </td>
             </tr>
         }
