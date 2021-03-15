@@ -35,11 +35,11 @@
 * Code should have xml documentation
 
 Tech Stack:
-* C#
-* PostgreSQL DB
-* EF Core
+* C# : Check
+* PostgreSQL DB : Check
+* EF Core : Check
 * Xunit
 * Serilog or Nlog
-* Azure 
-* Azure DevOps
-* ASP.NET MVC
+* Azure : Check
+* Azure DevOps : Check
+* ASP.NET MVC : Check

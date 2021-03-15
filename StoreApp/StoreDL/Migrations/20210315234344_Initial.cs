@@ -42,7 +42,7 @@ namespace StoreDL.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     OrderName = table.Column<string>(type: "text", nullable: true),
-                    OrderCustomerId = table.Column<int>(type: "integer", nullable: true),
+                    OrderCustomerId = table.Column<int>(type: "integer", nullable: false),
                     OrderLocationId = table.Column<int>(type: "integer", nullable: false),
                     OrderContents = table.Column<string>(type: "text", nullable: true),
                     OrderTotal = table.Column<decimal>(type: "numeric", nullable: false)
