@@ -13,16 +13,18 @@ namespace StoreMVC.Models
         [DisplayName("Order Id")]
         [Required]
         public int Id { get; set; }
-        
+
         [DisplayName("Order Name")]
         [Required]
         public string OrderName { get; set; }
 
-         [DisplayName("Order Customer Id")]
+        [DisplayName("Order Customer Id")]
+        [Range(0, Int32.MaxValue, ErrorMessage = "Should be a positive number")]
         [Required]
         public int OrderCustomerId { get; set; }
 
-         [DisplayName("Order Location Id")]
+        [DisplayName("Order Location Id")]
+        [Range(0, Int32.MaxValue, ErrorMessage = "Should be a positive number")]
         [Required]
         public int OrderLocationId { get; set; }
 
@@ -31,8 +33,9 @@ namespace StoreMVC.Models
         public string OrderContents { get; set; }
 
         [DisplayName("Order Total")]
+        [Range(0, Int32.MaxValue, ErrorMessage = "Should be a positive number")]
         [Required]
         public decimal OrderTotal { get; set; }
-      
+
     }
 }
