@@ -121,29 +121,30 @@ namespace StoreMVC.Controllers
             _orderBL.DeleteOrder(_orderBL.GetOrderByName(name));
             return RedirectToAction(nameof(Index));
         }
-        // public ActionResult Customers()
-        // {
+        public ActionResult Customers()
+        {
 
-        //      List<SelectListItem> customerList= new List<SelectListItem>();
-        //      var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
-        //     customerList.Add(items);
-        //     // var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList();
-        //     // if (items != null)
-        //     // {
-        //     //     ViewBag.data = items;
-        //     // }
+             List<SelectListItem> customerList= new List<SelectListItem>();
+            var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList();
+            if (items != null)
+            {
+                ViewBag.customer = items;
+            }
 
-        //     return View();
-        // }
-        // public ActionResult Location()
-        // {
-        //     var items = _locationBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList();
-        //     if (items != null)
-        //     {
-        //         ViewBag.data = items;
-        //     }
+            return View();
+        }
+        public ActionResult Locations()
+        {
 
-        //     return View();
-        // }
+             List<SelectListItem> locationList= new List<SelectListItem>();
+            var items = _locationBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList();
+            if (items != null)
+            {
+                ViewBag.location = items;
+            }
+
+            return View();
+        }
+       
     }
 }

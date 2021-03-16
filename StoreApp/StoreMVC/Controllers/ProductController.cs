@@ -11,10 +11,13 @@ namespace StoreMVC.Controllers
         private IProductBL _productBL;
         private IMapper _mapper;
 
-        public ProductController(IProductBL productBL, IMapper mapper)
+        private ILocationBL _locationBL;
+
+        public ProductController(IProductBL productBL, IMapper mapper, ILocationBL locationBL)
         {
             _productBL = productBL;
             _mapper = mapper;
+               _locationBL = locationBL;
         }
 
         //Actions are public methods in controllers that respond to client requests
@@ -31,11 +34,11 @@ namespace StoreMVC.Controllers
             //(do some further research into this)
             ViewBag.SortingPrice = String.IsNullOrEmpty(Sorting_Order) ? "price_desc" : "";
             ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
-            
+
             var products = from pro in _productBL.GetProducts() select pro;
-            if(Search_Data != null)
-            { 
-                products = products.Where(pro => pro.ProductLocation.ToString().Contains(Search_Data.ToUpper()) || pro.ProductLocation.ToString().Contains(Search_Data.ToUpper()));  
+            if (Search_Data != null)
+            {
+                products = products.Where(pro => pro.ProductLocation.ToString().Contains(Search_Data.ToUpper()) || pro.ProductLocation.ToString().Contains(Search_Data.ToUpper()));
             }
             switch (Sorting_Order)
             {
@@ -120,6 +123,16 @@ namespace StoreMVC.Controllers
         {
             _productBL.DeleteProduct(_productBL.GetProductByName(name));
             return RedirectToAction(nameof(Index));
+        }
+        public ActionResult Location()
+        {
+            var items = _locationBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList();
+            if (items != null)
+            {
+                ViewBag.location = items;
+            }
+
+            return View();
         }
     }
 }
