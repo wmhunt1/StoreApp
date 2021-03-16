@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using StoreBL;
@@ -21,15 +22,34 @@ namespace StoreMVC.Controllers
         // you can also have actions, that respond to different requests
         //You just have to map the request type to the action properly
         // GET: HeroController
-        public ActionResult Index()
+        public ActionResult Index(string Sorting_Order, string Search_Data)
         {
             //You have different kinds of views:
             //Strongly-typed - tied to a model
             //Weakly-typed - not tied to a model. gets data via viewbag, viewdata, tempdata, etc.
             // Dynamic - pass a model, don't tie to a view, let the view figure it out,
             //(do some further research into this)
-            //Let's create a strongly typed view:
-            return View(_productBL.GetProducts().Select(product => _mapper.cast2ProductIndexVM(product)).ToList());
+            ViewBag.SortingPrice = String.IsNullOrEmpty(Sorting_Order) ? "price_desc" : "";
+            ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
+            
+            var products = from pro in _productBL.GetProducts() select pro;
+            if(Search_Data != null)
+            { 
+                products = products.Where(pro => pro.ProductLocation.ToString().Contains(Search_Data.ToUpper()) || pro.ProductLocation.ToString().Contains(Search_Data.ToUpper()));  
+            }
+            switch (Sorting_Order)
+            {
+                case "price_desc":
+                    products = products.OrderBy(pro => pro.Price);
+                    break;
+                case "id_desc":
+                    products = products.OrderBy(pro => pro.Id);
+                    break;
+                default:
+                    products = products.OrderBy(pro => pro.Id);
+                    break;
+            }
+            return View(products.Select(product => _mapper.cast2ProductIndexVM(product)).ToList());
         }
 
         // GET: HeroController/Details?name={heroName}

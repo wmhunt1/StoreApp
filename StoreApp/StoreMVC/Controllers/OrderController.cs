@@ -22,22 +22,7 @@ namespace StoreMVC.Controllers
             _locationBL = locationBL;
             _customerBL = customerBL;
         }
-
-        //Actions are public methods in controllers that respond to client requests
-        //You can have specific actions respond to specific requests
-        // you can also have actions, that respond to different requests
-        //You just have to map the request type to the action properly
         // GET: HeroController
-        // public ActionResult Index()
-        // {
-        //     //You have different kinds of views:
-        //     //Strongly-typed - tied to a model
-        //     //Weakly-typed - not tied to a model. gets data via viewbag, viewdata, tempdata, etc.
-        //     // Dynamic - pass a model, don't tie to a view, let the view figure it out,
-        //     //(do some further research into this)
-        //     //Let's create a strongly typed view:
-        //     return View(_orderBL.GetOrders().Select(order => _mapper.cast2OrderIndexVM(order)).ToList());
-        // }
         public ActionResult Index(string Sorting_Order, string Search_Data1, string Search_Data2)
         {
             ViewBag.SortingTotal = String.IsNullOrEmpty(Sorting_Order) ? "total_desc" : "";
@@ -58,7 +43,7 @@ namespace StoreMVC.Controllers
                     orders = orders.OrderByDescending(ord => ord.OrderTotal);
                     break;
                 case "id_desc":
-                    orders = orders.OrderBy(cus => cus.Id);
+                    orders = orders.OrderBy(ord => ord.Id);
                     break;
                 default:
                     orders = orders.OrderBy(ord => ord.Id);
@@ -138,7 +123,7 @@ namespace StoreMVC.Controllers
         }
         // public ActionResult Customers()
         // {
-            
+
         //      List<SelectListItem> customerList= new List<SelectListItem>();
         //      var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
         //     customerList.Add(items);

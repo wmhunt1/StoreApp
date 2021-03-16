@@ -10,7 +10,7 @@ namespace StoreMVC.Models
     /// </summary>
     public class ProductEditVM
     {
-         [DisplayName("Product Id")]
+        [DisplayName("Product Id")]
         [Required]
         public int Id { get; set; }
         [DisplayName("Product Name")]
@@ -25,12 +25,12 @@ namespace StoreMVC.Models
         [Required]
         public decimal Price { get; set; }
 
-         [DisplayName("Product Quantity")]
+        [DisplayName("Product Quantity")]
         [Required]
         public int ProductQuantity { get; set; }
-        [DisplayName("Product Location")]
+        [DisplayName("Product Location Id")]
         [Required]
         public int ProductLocation { get; set; }
- 
+
     }
 }

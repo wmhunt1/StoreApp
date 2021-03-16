@@ -22,20 +22,9 @@ namespace StoreMVC.Controllers
         // you can also have actions, that respond to different requests
         //You just have to map the request type to the action properly
         // GET: HeroController
-        // public ActionResult Index()
-        // {
-        //     //You have different kinds of views:
-        //     //Strongly-typed - tied to a model
-        //     //Weakly-typed - not tied to a model. gets data via viewbag, viewdata, tempdata, etc.
-        //     // Dynamic - pass a model, don't tie to a view, let the view figure it out,
-        //     //(do some further research into this)
-        //     //Let's create a strongly typed view:
-        //     return View(_customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
-        // }
         public ActionResult Index(string Sorting_Order, string Search_Data)
         {
             ViewBag.SortingName = String.IsNullOrEmpty(Sorting_Order) ? "name_desc" : "";
-            //ViewBag.SortingAddress = Sorting_Order == "Address" ? "address_desc" : "Address";
             ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
             
             var customers = from cus in _customerBL.GetCustomers() select cus;

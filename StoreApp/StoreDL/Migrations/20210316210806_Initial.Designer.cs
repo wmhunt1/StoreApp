@@ -9,7 +9,7 @@ using StoreDL;
 namespace StoreDL.Migrations
 {
     [DbContext(typeof(StoreDBContext))]
-    [Migration("20210316203710_Initial")]
+    [Migration("20210316210806_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,8 +96,14 @@ namespace StoreDL.Migrations
                     b.Property<string>("ProductDesc")
                         .HasColumnType("text");
 
+                    b.Property<int>("ProductLocation")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ProductName")
                         .HasColumnType("text");
+
+                    b.Property<int>("ProductQuantity")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

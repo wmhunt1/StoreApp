@@ -20,9 +20,9 @@ namespace StoreMVC.Models
         [DisplayName("Price")]
         public decimal Price { get; set; }
 
-         [DisplayName("Product Quantity")]
+        [DisplayName("Product Quantity")]
         public int ProductQuantity { get; set; }
-        [DisplayName("Product Location")]
+        [DisplayName("Product Location Id")]
         public int ProductLocation { get; set; }
     }
 }

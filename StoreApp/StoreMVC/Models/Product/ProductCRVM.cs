@@ -28,9 +28,9 @@ namespace StoreMVC.Models
         [DisplayName("Product Quantity")]
         [Required]
         public int ProductQuantity { get; set; }
-        [DisplayName("Product Location")]
+        [DisplayName("Product Location Id")]
         [Required]
         public int ProductLocation { get; set; }
-      
+
     }
 }

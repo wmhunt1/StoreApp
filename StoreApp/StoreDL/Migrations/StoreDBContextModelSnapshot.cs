@@ -94,8 +94,14 @@ namespace StoreDL.Migrations
                     b.Property<string>("ProductDesc")
                         .HasColumnType("text");
 
+                    b.Property<int>("ProductLocation")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ProductName")
                         .HasColumnType("text");
+
+                    b.Property<int>("ProductQuantity")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

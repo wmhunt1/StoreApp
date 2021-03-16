@@ -60,7 +60,9 @@ namespace StoreDL.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ProductName = table.Column<string>(type: "text", nullable: true),
                     ProductDesc = table.Column<string>(type: "text", nullable: true),
-                    Price = table.Column<decimal>(type: "numeric", nullable: false)
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    ProductQuantity = table.Column<int>(type: "integer", nullable: false),
+                    ProductLocation = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

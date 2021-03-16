@@ -18,7 +18,7 @@ namespace StoreMVC.Models
         {
             return new Customer
             {
-                 Id = customer2BCasted.Id,
+                Id = customer2BCasted.Id,
                 CustomerName = customer2BCasted.CustomerName,
                 CustomerAddress = customer2BCasted.CustomerAddress
             };
@@ -64,7 +64,7 @@ namespace StoreMVC.Models
         {
             return new Location
             {
-                 Id = location2BCasted.Id,
+                Id = location2BCasted.Id,
                 LocationName = location2BCasted.LocationName,
                 LocationAddress = location2BCasted.LocationAddress
             };
@@ -73,7 +73,7 @@ namespace StoreMVC.Models
         {
             return new LocationCRVM
             {
-                 Id = location.Id,
+                Id = location.Id,
                 LocationName = location.LocationName,
                 LocationAddress = location.LocationAddress
             };
@@ -125,11 +125,11 @@ namespace StoreMVC.Models
         {
             return new ProductCRVM
             {
-                  Id = product.Id,
+                Id = product.Id,
                 ProductName = product.ProductName,
                 ProductDesc = product.ProductDesc,
                 Price = product.Price,
-                 ProductQuantity = product.ProductQuantity,
+                ProductQuantity = product.ProductQuantity,
                 ProductLocation = product.ProductLocation
             };
         }
@@ -141,7 +141,7 @@ namespace StoreMVC.Models
                 ProductName = product2BCasted.ProductName,
                 ProductDesc = product2BCasted.ProductDesc,
                 Price = product2BCasted.Price,
-                 ProductQuantity = product2BCasted.ProductQuantity,
+                ProductQuantity = product2BCasted.ProductQuantity,
                 ProductLocation = product2BCasted.ProductLocation
             };
         }
@@ -153,12 +153,12 @@ namespace StoreMVC.Models
                 ProductName = product.ProductName,
                 ProductDesc = product.ProductDesc,
                 Price = product.Price,
-                 ProductQuantity = product.ProductQuantity,
+                ProductQuantity = product.ProductQuantity,
                 ProductLocation = product.ProductLocation
             };
         }
         //Order
-           public OrderIndexVM cast2OrderIndexVM(Order order2BCasted)
+        public OrderIndexVM cast2OrderIndexVM(Order order2BCasted)
         {
             return new OrderIndexVM
             {
