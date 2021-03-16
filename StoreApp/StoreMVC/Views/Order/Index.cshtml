@@ -27,7 +27,7 @@
 <table class="table">
     <thead>
         <tr>
-            <<th>
+            <th>
                 @Html.ActionLink("Order ID", "Index", new { Sorting_Order = ViewBag.SortingId})
             </th>
             <th>
@@ -36,15 +36,22 @@
              <th>
                 @Html.DisplayNameFor(model => model.OrderCustomerId)
             </th>
+            @* <th>
+                @Html.DropDownListFor(model => model.OrderCustomerId, new SelectList(ViewBag.data, "Id", "CustomerName"), "Select Customer")
+            </th> *@
              <th>
                 @Html.DisplayNameFor(model => model.OrderLocationId)
             </th>
+            @* <th>
+                @Html.DropDownList(m => m.OrderLocationId,
+                new SelectList(ViewBag.data, "Id", "LocationName"))
+            </th> *@
              <th>
                 @Html.DisplayNameFor(model => model.OrderContents)
             </th>
-             @* <th>
+             <th>
                 @Html.DisplayNameFor(model => model.OrderTotal)
-            </th> *@
+            </th>
             <th>
                 @Html.ActionLink("Order Total", "Index", new { Sorting_Order = ViewBag.SortingTotal})
             </th>

@@ -10,11 +10,15 @@ namespace StoreMVC.Controllers
     {
         private IOrderBL _orderBL;
         private IMapper _mapper;
+        private ILocationBL _locationBL;
+        private ICustomerBL _customerBL;
 
-        public OrderController(IOrderBL orderBL, IMapper mapper)
+        public OrderController(IOrderBL orderBL, IMapper mapper, ILocationBL locationBL, ICustomerBL customerBL)
         {
             _orderBL = orderBL;
             _mapper = mapper;
+            _locationBL = locationBL;
+            _customerBL = customerBL;
         }
 
         //Actions are public methods in controllers that respond to client requests
@@ -38,13 +42,13 @@ namespace StoreMVC.Controllers
             ViewBag.SortingId = Sorting_Order == "Id" ? "id_desc" : "Id";
 
             var orders = from ord in _orderBL.GetOrders() select ord;
-            if(Search_Data1 != null)
-            { 
-                orders = orders.Where(ord => ord.OrderCustomerId.ToString().Contains(Search_Data1.ToUpper()) || ord.OrderCustomerId.ToString().Contains(Search_Data1.ToUpper()));  
+            if (Search_Data1 != null)
+            {
+                orders = orders.Where(ord => ord.OrderCustomerId.ToString().Contains(Search_Data1.ToUpper()) || ord.OrderCustomerId.ToString().Contains(Search_Data1.ToUpper()));
             }
-            if(Search_Data2 != null)
-            { 
-                orders = orders.Where(ord => ord.OrderLocationId.ToString().Contains(Search_Data2.ToUpper()) || ord.OrderCustomerId.ToString().Contains(Search_Data2.ToUpper()));  
+            if (Search_Data2 != null)
+            {
+                orders = orders.Where(ord => ord.OrderLocationId.ToString().Contains(Search_Data2.ToUpper()) || ord.OrderCustomerId.ToString().Contains(Search_Data2.ToUpper()));
             }
             switch (Sorting_Order)
             {
@@ -130,5 +134,25 @@ namespace StoreMVC.Controllers
             _orderBL.DeleteOrder(_orderBL.GetOrderByName(name));
             return RedirectToAction(nameof(Index));
         }
+        public ActionResult Customers()
+        {
+            var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList();
+            if (items != null)
+            {
+                ViewBag.data = items;
+            }
+
+            return View();
+        }
+        // public ActionResult Location()
+        // {
+        //     var items = _locationBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList();
+        //     if (items != null)
+        //     {
+        //         ViewBag.data = items;
+        //     }
+
+        //     return View();
+        // }
     }
 }
