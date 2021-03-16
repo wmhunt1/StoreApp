@@ -1,8 +1,10 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
 using StoreBL;
 using StoreMVC.Models;
+using System.Collections.Generic;
 
 namespace StoreMVC.Controllers
 {
@@ -134,16 +136,20 @@ namespace StoreMVC.Controllers
             _orderBL.DeleteOrder(_orderBL.GetOrderByName(name));
             return RedirectToAction(nameof(Index));
         }
-        public ActionResult Customers()
-        {
-            var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList();
-            if (items != null)
-            {
-                ViewBag.data = items;
-            }
+        // public ActionResult Customers()
+        // {
+            
+        //      List<SelectListItem> customerList= new List<SelectListItem>();
+        //      var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList());
+        //     customerList.Add(items);
+        //     // var items = _customerBL.GetCustomers().Select(customer => _mapper.cast2CustomerIndexVM(customer)).ToList();
+        //     // if (items != null)
+        //     // {
+        //     //     ViewBag.data = items;
+        //     // }
 
-            return View();
-        }
+        //     return View();
+        // }
         // public ActionResult Location()
         // {
         //     var items = _locationBL.GetLocations().Select(location => _mapper.cast2LocationIndexVM(location)).ToList();

@@ -24,6 +24,13 @@ namespace StoreMVC.Models
         [DisplayName("Price")]
         [Required]
         public decimal Price { get; set; }
+
+        [DisplayName("Product Quantity")]
+        [Required]
+        public int ProductQuantity { get; set; }
+        [DisplayName("Product Location")]
+        [Required]
+        public int ProductLocation { get; set; }
       
     }
 }

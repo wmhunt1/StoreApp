@@ -104,7 +104,9 @@ namespace StoreMVC.Models
                 Id = product2BCasted.Id,
                 ProductName = product2BCasted.ProductName,
                 ProductDesc = product2BCasted.ProductDesc,
-                Price = product2BCasted.Price
+                Price = product2BCasted.Price,
+                ProductQuantity = product2BCasted.ProductQuantity,
+                ProductLocation = product2BCasted.ProductLocation
             };
         }
         public Product cast2Product(ProductCRVM product2BCasted)
@@ -114,7 +116,9 @@ namespace StoreMVC.Models
                 Id = product2BCasted.Id,
                 ProductName = product2BCasted.ProductName,
                 ProductDesc = product2BCasted.ProductDesc,
-                Price = product2BCasted.Price
+                Price = product2BCasted.Price,
+                ProductQuantity = product2BCasted.ProductQuantity,
+                ProductLocation = product2BCasted.ProductLocation
             };
         }
         public ProductCRVM cast2ProductCRVM(Product product)
@@ -124,7 +128,9 @@ namespace StoreMVC.Models
                   Id = product.Id,
                 ProductName = product.ProductName,
                 ProductDesc = product.ProductDesc,
-                Price = product.Price
+                Price = product.Price,
+                 ProductQuantity = product.ProductQuantity,
+                ProductLocation = product.ProductLocation
             };
         }
         public Product cast2Product(ProductEditVM product2BCasted)
@@ -134,7 +140,9 @@ namespace StoreMVC.Models
                 Id = product2BCasted.Id,
                 ProductName = product2BCasted.ProductName,
                 ProductDesc = product2BCasted.ProductDesc,
-                Price = product2BCasted.Price
+                Price = product2BCasted.Price,
+                 ProductQuantity = product2BCasted.ProductQuantity,
+                ProductLocation = product2BCasted.ProductLocation
             };
         }
         public ProductEditVM cast2ProductEditVM(Product product)
@@ -144,7 +152,9 @@ namespace StoreMVC.Models
                 Id = product.Id,
                 ProductName = product.ProductName,
                 ProductDesc = product.ProductDesc,
-                Price = product.Price
+                Price = product.Price,
+                 ProductQuantity = product.ProductQuantity,
+                ProductLocation = product.ProductLocation
             };
         }
         //Order
